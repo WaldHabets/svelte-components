@@ -24,7 +24,7 @@
 </li>
 
 <style lang="scss">
-    @import "../assets/style/theme";
+    @import "../assets/style/pt-theme-colours";
 
     $padding: 8px;
     $height: 48px;

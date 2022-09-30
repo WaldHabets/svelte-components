@@ -60,7 +60,7 @@
 </div>
 
 <style lang="scss">
-  @import "../assets/style/theme";
+  @import "../assets/style/pt-theme-colours";
 
   :root {
     padding: 0;

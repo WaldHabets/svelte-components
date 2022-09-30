@@ -176,12 +176,7 @@
 </div>
 
 <style lang="scss">
-  @import "../../../assets/style/pt-centered-page";
-  @import "../../../assets/style/pt-containers";
-  @import "../../../assets/style/pt-inputs";
-  @import "../../../assets/style/pt-labels";
-  @import "../../../assets/style/pt-switches";
-  @import "../../../assets/style/theme";
+  @import "../../../assets/style/pt-theme-colours";
 
   .control-example {
     display: flex;

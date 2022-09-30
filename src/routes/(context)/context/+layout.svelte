@@ -30,7 +30,6 @@
 </PageLayout>
 
 <style lang="scss">
-  @import "../../../assets/style/theme";
   :root {
     body {
       height: 100%;

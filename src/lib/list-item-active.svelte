@@ -32,8 +32,6 @@
 </li>
 
 <style lang="scss">
-  @import "../assets/style/pt-list";
-
   .list-item.active {
     display: flex;
     align-items: center;

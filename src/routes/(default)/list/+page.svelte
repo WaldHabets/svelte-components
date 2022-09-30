@@ -69,10 +69,7 @@
 
 
 <style lang="scss">
-  @import "../../../assets/style/pt-centered-page";
-  @import "../../../assets/style/pt-containers";
-  @import "../../../assets/style/pt-list";
-  @import "../../../assets/style/theme";
+  @import "../../../assets/style/pt-theme-colours";
 
   .container-wrapper {
     color: #6f6f6f;

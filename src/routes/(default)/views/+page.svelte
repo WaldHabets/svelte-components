@@ -85,9 +85,7 @@
 </div>
 
 <style lang="scss">
-  @import "../../../assets/style/pt-centered-page";
-  @import "../../../assets/style/pt-containers";
-  @import "../../../assets/style/theme";
+  @import "../../../assets/style/pt-theme-colours";
 
   .tablist-wrapper {
     margin-top: 16px;

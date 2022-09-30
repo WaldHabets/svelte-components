@@ -21,6 +21,4 @@
 </div>
 
 <style lang="scss">
-  @import "../../../assets/style/pt-centered-page";
-  @import "../../../assets/style/pt-containers";
 </style>
