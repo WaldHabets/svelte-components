@@ -1,0 +1,60 @@
+@import "pt-colours";
+
+@mixin tablist-auto($color) {
+  $color-light: rgba($color, 0.2);
+  @include tablist($color, $color-light);
+}
+@mixin tablist($color, $color-light) {
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: 0 0 4px -1px rgba(0, 0, 0, 0.7);
+  padding: 4px;
+  border-radius: 32px;
+  display: flex;
+  overflow-y: scroll;
+  box-sizing: border-box;
+
+  button {
+    font-size: 14px;
+    font-weight: bold;
+    color: inherit;
+    padding: 4px 16px;
+    box-sizing: border-box;
+    display: inline-block;
+    border-radius: 32px;
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    background: none;
+    border: none;
+    min-width: max-content;
+
+    &:hover:not(.selected):not(:disabled) {
+      cursor: pointer;
+      color: $color;
+      background-color: $color-light;
+    }
+    &.selected {
+      color: $color;
+      background-color: $color-light;
+    }
+  }
+
+  &, &.light {
+    color: $pt-l-text-colour;
+    border-color: $pt-l-border-colour;
+    background-color: $pt-l-container-background;
+    button:disabled {
+      //color: $pt-l-text-disabled;
+      color: #959595;
+    }
+  }
+  &.dark {
+    color: $pt-d-text-colour;
+    border-color: $pt-d-border-colour;
+    background-color: $pt-d-container-background;
+    button:disabled {
+      color: $pt-d-text-disabled;
+    }
+  }
+}

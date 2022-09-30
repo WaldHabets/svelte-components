@@ -1,0 +1,40 @@
+@import "pt-colours";
+
+.container-wrapper {
+  margin: 16px;
+  &:not(:first-of-type) {
+    margin-top: 32px;
+  }
+}
+
+.container-header {
+  margin-bottom: 8px;
+  h1 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  p {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 18px;
+  }
+}
+
+@mixin container-borders() {
+  border-radius: 8px;
+  &,
+  &.light {
+    border: 2px solid $pt-l-border-colour;
+    background-color: $pt-l-container-background;
+  }
+
+  &.dark {
+    border: 2px solid $pt-d-border-colour;
+    background-color: $pt-d-container-background;
+  }
+}
+.container {
+  @include container-borders();
+  padding: 16px;
+}

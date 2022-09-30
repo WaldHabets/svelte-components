@@ -1,0 +1,99 @@
+/**
+ * General buttons
+ */
+@import "pt-buttons";
+@import "pt-card";
+/**
+ * Classes to center page contents and define widths
+ * Contains:
+ *  .centered-page, .small, .wide
+ */
+@import "pt-centered-page";
+/**
+ * Container classes
+ * Contains:
+ *  .container-wrapper { .container-header, .container }
+ */
+@import "pt-containers";
+@import "pt-dropdowns";
+@import "pt-inputs";
+@import "pt-link";
+@import "pt-tablist";
+@import "pt-switches";
+
+/** Base Colors */
+/** ----------------------------------- */
+@import "pt-colours";
+
+/** Theme Colours                       */
+/** ----------------------------------- */
+//$theme-color: #540466;
+//$theme-light: #ECD6F0;
+//$theme-background: #f9f3fb;
+
+/**
+ * Color to be shown on $theme-primary
+ * Should be readable when used on top of $theme-primary
+ */
+$theme-on-primary: #042100;
+$theme-d-on-primary: #042100;
+/**
+ * Primary theme colour
+ * Should be readable when used on top of $theme-light
+ */
+$theme-control: #32722a;
+$theme-d-primary: #32722a;
+/**
+ * Used as background for certain hover effects and active control elements.
+ * Content and border should be coloured with $theme-primary or $theme-on-primary
+ */
+$theme-light: #d5ebcb;
+$theme-d-light: #d5ebcb;
+/**
+ * Can be used as container backgrounds, for example headers.
+ * In this case it should use $theme-on-primary as border colour.
+ */
+$theme-secondary: #54664e;
+$theme-d-secondary: #54664e;
+
+
+$theme-background: #f0f3fa;
+$theme-hover-background: #eff6f5;
+$theme-accent: #75FF91;
+$theme-complementary-1: #AD282C;
+$theme-complementary-2: #602F61;
+$theme-complementary-3: #613625;
+
+.card {
+  @include card($theme-control);
+}
+
+.button {
+  @include button($theme-control, $theme-light, $theme-on-primary);
+  display: inline-block;
+}
+
+.flat-button {
+  //@include flat-button($theme-control, $theme-light);
+  @include clear-button($theme-control, $theme-light);
+  display: inline-block;
+}
+
+.tablist {
+  @include tablist($theme-on-primary, $theme-light);
+}
+
+.switch {
+  @include switch($theme-control, $theme-light)
+}
+
+.link {
+  @include link(#75FF91, #C2FFCE)
+}
+
+:global(.light) {
+
+}
+:global(.dark) {
+
+}

@@ -1,0 +1,10 @@
+.centered-page {
+  width: 100%;
+  margin: auto;
+  &.small {
+    max-width: 768px;
+  }
+  &.wide {
+    max-width: 1024px;
+  }
+}

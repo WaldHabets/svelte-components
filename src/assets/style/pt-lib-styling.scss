@@ -1,0 +1,15 @@
+@use "sass:color";
+@import "pt-colours";
+
+@mixin auto-text-colour($background-color) {
+  @if (color.lightness($background-color) < 50) {
+    color: $pt-d-text-colour;
+  } @else {
+    color: $pt-l-text-colour;
+  }
+}
+
+@mixin gradient($dark, $light) {
+  background: $dark;
+  background: linear-gradient(0deg, $dark 35%, $light 100%);
+}
