@@ -3,6 +3,14 @@
 </script>
 
 <div class="centered-page small">
+  <header class="page-title">
+    <h1>
+      Controls
+    </h1>
+    <p>
+      Various control elements.
+    </p>
+  </header>
   <section class="container-wrapper">
     <header class="container-header">
       <h1>Buttons</h1>
@@ -10,19 +18,37 @@
     <div class="container">
       <div class="control-example">
         <p>Default button</p>
-        <button class="button">Button</button>
+        <button class="button medium">Button</button>
+      </div>
+      <div class="control-example">
+        <div>
+          <h2>Themed button</h2>
+          <p>Use these buttons to highlight the most important actions, or to highlight a positive action.</p>
+        </div>
+        <button class="button themed medium">Button</button>
+      </div>
+      <div class="control-example">
+        <p>Warn button</p>
+        <button class="button warn medium">Button</button>
+      </div>
+      <div class="control-example">
+        <div>
+          <h2>Alert button</h2>
+          <p>Alert buttons should be used to indicate a damaging or unreversable action.</p>
+        </div>
+        <button class="button alert medium">Button</button>
       </div>
       <div class="control-example">
         <p>Default button (disabled)</p>
-        <button class="button" disabled>Button</button>
+        <button class="button medium" disabled>Button</button>
       </div>
       <div class="control-example">
         <p>Flat button</p>
-        <button class="flat-button">Button</button>
+        <button class="flat-button medium">Button</button>
       </div>
       <div class="control-example">
         <p>Flat icon button</p>
-        <button class="flat-button default-size icon">
+        <button class="flat-button default-size medium icon">
           <svg viewBox="0 0 24 24">
             <path d="{mdiDotsVertical}" />
           </svg>
@@ -30,7 +56,7 @@
       </div>
       <div class="control-example">
         <p>Flat icon button with text</p>
-        <button class="flat-button flex default-size icon">
+        <button class="flat-button flex default-size medium icon">
           <label>Button</label>
           <svg viewBox="0 0 24 24">
             <path d="{mdiDotsVertical}" />
@@ -70,21 +96,30 @@
     </header>
     <div class="container">
         <div>
-          <label class="label" for="input">Text Input</label>
-          <input class="text-input" id="input" placeholder="Text input">
+          <label class="input-label" for="input">Text Input</label>
+          <input class="text-input medium" id="input" placeholder="Text input">
         </div>
         <div>
-          <label class="label" for="input-d">Disabled Input</label>
-          <input class="text-input" id="input-d" placeholder="Text input (disabled)" disabled>
+          <label class="input-label" for="input-d">Disabled Input</label>
+          <input class="text-input medium" id="input-d" placeholder="Text input (disabled)" disabled>
         </div>
         <div>
-          <label class="label" for="input-r">Required Text Input</label>
-          <input class="text-input-v" id="input-r" placeholder="Text input (required)" required><span></span>
+          <label class="input-label" for="input-r">Required Text Input</label>
+          <input class="text-input-v medium" id="input-r" placeholder="Text input (required)" required><span></span>
         </div>
         <div>
-          <label class="label" for="input-v">Validated Text Input (email)</label>
-          <input class="text-input-v" id="input-v" type="email" placeholder="Text input (invalid)"><span></span>
+          <label class="input-label" for="input-v">Validated Text Input (email)</label>
+          <input class="text-input-v medium" id="input-v" type="email" placeholder="Text input (invalid)"><span></span>
         </div>
+      <div>
+        <label class="input-label" for="input-search">Input with button</label>
+        <form class="search-bar">
+          <input class="text-input connect-end medium" id="input-search" placeholder="Search"><!--
+        --><button class="button connect-start medium">
+            Search
+          </button>
+        </form>
+      </div>
     </div>
   </section>
   <section class="container-wrapper">
@@ -94,11 +129,11 @@
     <div class="container">
       <label for="check1" class="radio-group">
         <input type="checkbox" id="check1" name="radio-group" value="HTML">
-        Option 1
+        <span class="radio-label">Option 1</span>
       </label>
       <label for="check2" class="radio-group">
         <input type="checkbox" id="check2" name="radio-group" value="HTML">
-        Option 2
+        <span class="radio-label">Option 2</span>
       </label>
       <label for="check3" class="radio-group">
         <input type="checkbox" id="check3" name="radio-group" value="HTML">
@@ -123,11 +158,11 @@
     <div class="container">
       <label for="radio1" class="radio-group">
         <input type="radio" id="radio1" name="radio-group" value="HTML">
-        <span>Option 1</span>
+        <span class="radio-label">Option 1</span>
       </label>
       <label for="radio2" class="radio-group">
         <input type="radio" id="radio2" name="radio-group" value="HTML">
-        <span>Option 2</span>
+        <span class="radio-label">Option 2</span>
       </label>
       <label for="radio3" class="radio-group">
         <input type="radio" id="radio3" name="radio-group" value="HTML">
@@ -178,6 +213,18 @@
 <style lang="scss">
   @import "../../../assets/style/pt-theme-colours";
 
+  .input-label {
+    display: block;
+    margin-bottom: 4px;
+  }
+  .search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    input {
+      margin: 0;
+    }
+  }
   .control-example {
     display: flex;
     align-items: center;
@@ -253,9 +300,16 @@
     accent-color: #602F61;
     font-size: 16px;
     font-weight: normal;
+    align-items: center;
 
     input {
       margin-right: 8px;
+      width: 20px;
+      height: 20px;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #bbb;
     }
 
     .radio-label {

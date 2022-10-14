@@ -2,37 +2,87 @@
     /** Layout */
     import PageLayout from "../../lib/page-layout.svelte";
     /** Sidebar */
-    import SidebarGroup from "../../lib/sidebar-group.svelte";
-    import SidebarTab from "../../lib/sidebar-tab.svelte";
+    //import { type SidebarGroup, type SidebarItem} from "../../lib/sidebar-contents";
     /** Icons */
     import {
         mdiCardOutline,
         mdiViewCarouselOutline,
         mdiButtonCursor,
-        mdiCogOutline,
-        mdiHome, mdiHomeOutline,
-      mdiFormatListBulletedSquare
+        mdiEmoticonOutline,
+        mdiPageLayoutBody,
+        mdiMagnify,
+        mdiPalette, mdiHomeOutline,
+        mdiFormatListBulletedSquare, mdiGesture
     } from "@mdi/js";
+
+    let sidebarContents = [
+        {
+            name: "1",
+            items: [{
+                icon: mdiHomeOutline,
+                href: "/",
+                text: "Home"
+            }]
+        },
+        {
+            name: "Style & Layout",
+            items: [
+                {
+                    icon: mdiPageLayoutBody,
+                    href: "/layout",
+                    text: "Layout & Size"
+                },
+                {
+                    icon: mdiPalette,
+                    href: "/colour",
+                    text: "Colour"
+                },
+                {
+                    icon: mdiEmoticonOutline,
+                    href: "/iconography",
+                    text: "Iconography"
+                }
+            ]
+        },
+        {
+            name: "Interaction",
+            items: [
+                {
+                    icon: mdiButtonCursor,
+                    href: "/controls",
+                    text: "Controls"
+                },
+                {
+                    icon: mdiGesture,
+                    href: "/gestures",
+                    text: "Gestures"
+                }
+            ]
+        },
+        {
+            name: "3",
+            items: [
+                {icon: mdiMagnify, href: "/search", text: "Search"}
+            ]
+        },
+        {
+            name: "Structure",
+            items: [
+                {icon: mdiCardOutline, href: "/containers", text: "Containers"},
+                {icon: mdiFormatListBulletedSquare, href: "/list", text: "List"},
+                {icon: mdiViewCarouselOutline, href: "/views", text: "Views"}
+            ]
+        }
+    ];
 </script>
 
-<PageLayout>
-    <svelte:fragment slot="sidebar-nav">
-        <SidebarGroup>
-            <SidebarTab icon={mdiHomeOutline} href="/" title="Home">Tab 1</SidebarTab>
-        </SidebarGroup>
-        <SidebarGroup>
-            <SidebarTab icon={mdiButtonCursor} href="/controls" title="Controls" />
-        </SidebarGroup>
-        <SidebarGroup>
-            <SidebarTab icon={mdiCardOutline} href="/containers" title="Containers" />
-            <SidebarTab icon={mdiFormatListBulletedSquare} href="/list" title="List" />
-            <SidebarTab icon={mdiViewCarouselOutline} href="/views" title="Views">Another group 2 item</SidebarTab>
-        </SidebarGroup>
-        <SidebarGroup>
-            <SidebarTab icon={mdiHome} href="/nested" title="Nested pages" />
-            <SidebarTab icon="{mdiHome}" href="/context" title="Context changes" />
-        </SidebarGroup>
-    </svelte:fragment>
+<PageLayout sidebar={sidebarContents}>
+<!--    <svelte:fragment slot="sidebar-nav">-->
+<!--        <SidebarGroup>-->
+<!--            <SidebarTab icon={mdiHome} href="/nested" title="Nested pages" />-->
+<!--            <SidebarTab icon="{mdiHome}" href="/context" title="Context changes" />-->
+<!--        </SidebarGroup>-->
+<!--    </svelte:fragment>-->
     <slot slot="main"></slot>
 </PageLayout>
 

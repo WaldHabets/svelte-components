@@ -11,7 +11,9 @@ export { matchers } from './client-matchers.js';
 	() => import('./nodes/8'),
 	() => import('./nodes/9'),
 	() => import('./nodes/10'),
-	() => import('./nodes/11')];
+	() => import('./nodes/11'),
+	() => import('./nodes/12'),
+	() => import('./nodes/13')];
 
 			export const server_loads = [];
 
@@ -20,9 +22,11 @@ export { matchers } from './client-matchers.js';
 	"(context)/context": [5,[2]],
 	"(default)/containers": [7,[3]],
 	"(default)/controls": [8,[3]],
-	"(default)/list": [9,[3]],
-	"(default)/views": [10,[3]],
-	"(nested)/nested": [11,[4]]
+	"(default)/layout": [9,[3]],
+	"(default)/list": [10,[3]],
+	"(default)/search": [11,[3]],
+	"(default)/views": [12,[3]],
+	"(nested)/nested": [13,[4]]
 };
 
 			export const hooks = {

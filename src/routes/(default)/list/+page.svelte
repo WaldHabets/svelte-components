@@ -1,11 +1,25 @@
 <script lang="ts">
   /** Components */
   import ListItemActive from "../../../lib/list-item-active.svelte";
+  import ModalAction from "../../../lib/modal-action.svelte";
+  import ModalAlert from "../../../lib/modal-alert.svelte";
   /** Icons */
   import { mdiArrowRight, mdiQrcode, mdiOpenInNew, mdiCardMultipleOutline, mdiFormatQuoteClose, mdiDotsVertical } from "@mdi/js";
+
+  let sheet;
+  let modal;
+  let showSheet: boolean = true;
+  function toggle() {
+    showSheet = true;
+    console.log(showSheet);
+  }
+  $: console.log(`showSheet is ${showSheet}`)
 </script>
 
 <div class="centered-page small">
+  <header class="page-title">
+    <h1>Lists</h1>
+  </header>
   <section class="container-wrapper">
     <header class="container-header">
       <h1>This is a list-box with active list-items</h1>
@@ -47,22 +61,54 @@
     </header>
     <ul class="list-box">
       <li class="list-item static">
-        <p>This item has some action buttons</p>
-        <button class="flat-button list-button">
+        <div class="flex-row">
+          <p>This item has some action buttons</p>
+          <button class="button list-button" on:click={sheet.show}>
+            <svg viewBox="0 0 24 24">
+              <path d="{mdiDotsVertical}" />
+            </svg>
+          </button>
+        </div>
+        <ModalAction title="This item has some action buttons" bind:sheet={sheet}>
+          <button class="flat-button big">
+            delete
+          </button>
+          <button class="flat-button big square">
+
+          </button>
+        </ModalAction>
+      </li>
+      <li class="list-item flex-row">
+        <p>In general we prefere flat buttons for lists</p>
+        <button class="button" on:click={modal.show}>
+          <label>Flat button</label>
+        </button>
+        <ModalAlert
+          title="This is a modal"
+          bind:modal={modal}
+          cancelAction="Cancel action"
+          negativeAction="Negative action"
+          positiveAction="Positive action">
+          <svelte:fragment slot="content">
+            It should have at most three buttons. These can be a negative action, positive action or cancel action. Labels for each of these actions should be short and descriptive and not contain any imagery.
+          </svelte:fragment>
+        </ModalAlert>
+      </li>
+      <li class="list-item split-row">
+        <div class="content flex-row">
+          <p>This button has a combination</p>
+          <button class="button" on:click={sheet.show}>
+            Open
+          </button>
+        </div>
+        <button class="button list-button" on:click={sheet.show}>
           <svg viewBox="0 0 24 24">
             <path d="{mdiDotsVertical}" />
           </svg>
         </button>
       </li>
-      <li class="list-item">
-        <p>In general we prefere flat buttons for lists</p>
-        <button class="flat-button">
-          <label>Flat button</label>
-        </button>
-      </li>
-      <li class="list-item">Item 3</li>
-      <li class="list-item">Item 4</li>
-      <li class="list-item">And this is the fifth item.</li>
+      <li class="list-item flex-row">Item 4</li>
+      <li class="list-item flex-row">And this is the fifth item.</li>
     </ul>
   </section>
 </div>
@@ -77,7 +123,18 @@
     &:not(:first-of-type) {
       margin-top: 32px;
     }
-    .list-item {
+    .split-row {
+      display: flex;
+      align-items: center;
+      .content {
+        flex-grow: 1;
+        border-right: 1px solid #bbb;
+        padding-right: 8px;
+        margin-right: 8px;
+      }
+
+    }
+    .flex-row {
       display: flex;
       align-items: center;
       justify-content: space-between;

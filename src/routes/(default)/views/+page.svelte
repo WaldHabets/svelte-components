@@ -32,7 +32,7 @@
 </div>
 <div class="centered-page small">
   {#if activeView === 'view1'}
-    <section class="container-wrapper" transition:slide>
+    <section class="container-wrapper">
       <header class="container-header">
         <h1>This is View 1</h1>
         <p>You can add a paragraph that will provide extra information about its contents.</p>
@@ -42,7 +42,7 @@
       </div>
     </section>
   {:else if activeView === 'view2'}
-    <section class="container-wrapper" transition:slide>
+    <section class="container-wrapper">
       <header class="container-header">
         <h1>This is View 2</h1>
         <p>You can add a paragraph that will provide extra information about its contents.</p>
@@ -52,7 +52,7 @@
       </div>
     </section>
   {:else if activeView === 'view3'}
-    <section class="container-wrapper" transition:slide>
+    <section class="container-wrapper">
       <header class="container-header">
         <h1>This is the header for a container</h1>
         <p>You can add a paragraph that will provide extra information about its contents.</p>
@@ -62,7 +62,7 @@
       </div>
     </section>
   {:else if activeView === 'view4'}
-    <section class="container-wrapper" transition:slide>
+    <section class="container-wrapper">
       <header class="container-header">
         <h1>This is the header for a container</h1>
         <p>You can add a paragraph that will provide extra information about its contents.</p>
@@ -72,7 +72,7 @@
       </div>
     </section>
   {:else}
-    <section class="container-wrapper" transition:slide>
+    <section class="container-wrapper">
       <header class="container-header">
         <h1>This is the header for a container</h1>
         <p>You can add a paragraph that will provide extra information about its contents.</p>

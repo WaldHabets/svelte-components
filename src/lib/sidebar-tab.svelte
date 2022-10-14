@@ -3,6 +3,10 @@
 </script>
 
 <script lang="ts">
+    /** events */
+    import { createEventDispatcher } from 'svelte';
+
+    const dispatch = createEventDispatcher();
     import { page } from "$app/stores";
 
     export let icon: string;
@@ -10,10 +14,14 @@
     export let title: string;
 
     $: active = $page.url.pathname === href;
+
+    function notify(): void {
+      dispatch('nav');
+    }
 </script>
 
 <li {title} class={active ? 'active' : ''}>
-   <a {href}>
+   <a {href} on:click>
        <svg viewBox="0 0 24 24">
            <path d={icon} />
        </svg>
