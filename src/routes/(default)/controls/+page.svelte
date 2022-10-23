@@ -18,37 +18,39 @@
     <div class="container">
       <div class="control-example">
         <p>Default button</p>
-        <button class="button medium">Button</button>
+        <button class="button --medium">Button</button>
       </div>
       <div class="control-example">
         <div>
           <h2>Themed button</h2>
           <p>Use these buttons to highlight the most important actions, or to highlight a positive action.</p>
+          <p>Classes: <code>button</code>, <code>--themed</code>, <code>--medium</code></p>
         </div>
-        <button class="button themed medium">Button</button>
+        <button class="button --themed --medium">Button</button>
       </div>
       <div class="control-example">
         <p>Warn button</p>
-        <button class="button warn medium">Button</button>
+        <button class="button --warn --medium">Button</button>
       </div>
       <div class="control-example">
         <div>
           <h2>Alert button</h2>
           <p>Alert buttons should be used to indicate a damaging or unreversable action.</p>
+          <p>Classes: <code>button</code>, <code>alert</code>, <code>medium</code></p>
         </div>
-        <button class="button alert medium">Button</button>
+        <button class="button --alert --medium">Button</button>
       </div>
       <div class="control-example">
         <p>Default button (disabled)</p>
-        <button class="button medium" disabled>Button</button>
+        <button class="button --medium" disabled>Button</button>
       </div>
       <div class="control-example">
         <p>Flat button</p>
-        <button class="flat-button medium">Button</button>
+        <button class="flat-button --medium">Button</button>
       </div>
       <div class="control-example">
         <p>Flat icon button</p>
-        <button class="flat-button default-size medium icon">
+        <button class="flat-button --medium --icon --square">
           <svg viewBox="0 0 24 24">
             <path d="{mdiDotsVertical}" />
           </svg>
@@ -56,7 +58,7 @@
       </div>
       <div class="control-example">
         <p>Flat icon button with text</p>
-        <button class="flat-button flex default-size medium icon">
+        <button class="flat-button flex default-size --medium --icon">
           <label>Button</label>
           <svg viewBox="0 0 24 24">
             <path d="{mdiDotsVertical}" />
@@ -97,11 +99,11 @@
     <div class="container">
         <div>
           <label class="input-label" for="input">Text Input</label>
-          <input class="text-input medium" id="input" placeholder="Text input">
+          <input class="text-input --medium" id="input" placeholder="Text input">
         </div>
         <div>
           <label class="input-label" for="input-d">Disabled Input</label>
-          <input class="text-input medium" id="input-d" placeholder="Text input (disabled)" disabled>
+          <input class="text-input --medium" id="input-d" placeholder="Text input (disabled)" disabled>
         </div>
         <div>
           <label class="input-label" for="input-r">Required Text Input</label>
@@ -109,13 +111,13 @@
         </div>
         <div>
           <label class="input-label" for="input-v">Validated Text Input (email)</label>
-          <input class="text-input-v medium" id="input-v" type="email" placeholder="Text input (invalid)"><span></span>
+          <input class="text-input-v --medium" id="input-v" type="email" placeholder="Text input (invalid)"><span></span>
         </div>
       <div>
         <label class="input-label" for="input-search">Input with button</label>
         <form class="search-bar">
-          <input class="text-input connect-end medium" id="input-search" placeholder="Search"><!--
-        --><button class="button connect-start medium">
+          <input class="text-input --connect-end --medium" id="input-search" placeholder="Search"><!--
+        --><button class="button --connect-start --medium">
             Search
           </button>
         </form>

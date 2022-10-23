@@ -1,5 +1,5 @@
-<div class="details-container-wrapper container">
-  <div class="summary-container">
+<div class={"details-container-wrapper container " + bClass}>
+  <div class={"summary-container " + bClassSummary}>
     <div class="summary">
       <slot name="summary" />
     </div>
@@ -11,7 +11,7 @@
     </button>
   </div>
     {#if open}
-      <div class="details-container">
+      <div class={"details-container " + bClassDetails}>
         <div class="details">
           <slot name="details" />
         </div>
@@ -31,6 +31,9 @@
   /** Props */
   export let labelExpand: string = "";
   export let labelCollapse: string = "";
+  export let bClass: string = "";
+  export let bClassSummary: string = "";
+  export let bClassDetails: string = "";
 
   let open = false;
 

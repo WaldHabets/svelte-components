@@ -18,6 +18,10 @@
       show(): void {
         showModal = true;
       },
+      showWithData(data: object): void {
+        showModal = true;
+        param = data;
+      },
       hide(): void {
         showModal = false;
       }
@@ -57,16 +61,16 @@
         <slot></slot>
       </div>
       <div class="option-sheet-buttons">
-        <button class="option-sheet-button button big" on:click={onCancelAction}>
+        <button class="option-sheet-button --button --big" on:click={onCancelAction}>
           {cancelAction}
         </button>
         {#if negativeAction}
-          <button class="option-sheet-button button alert big" on:click={onNegativeAction}>
+          <button class="option-sheet-button --button --alert --big" on:click={onNegativeAction}>
             {negativeAction}
           </button>
         {/if}
         {#if positiveAction}
-          <button class="option-sheet-button button themed big" on:click={onPositiveAction}>
+          <button class="option-sheet-button --button --themed --big" on:click={onPositiveAction}>
             {positiveAction}
           </button>
         {/if}

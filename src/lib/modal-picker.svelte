@@ -17,6 +17,9 @@
       show(): void {
         showModal = true;
       },
+      showWithData(data: object) {
+        showModal = true;
+      },
       hide(): void {
         showModal = false;
       }

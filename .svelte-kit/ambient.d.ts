@@ -30,12 +30,10 @@ declare module '$env/static/private' {
 	export const npm_command: string;
 	export const SESSION_MANAGER: string;
 	export const npm_config_userconfig: string;
-	export const COLORTERM: string;
 	export const XDG_CONFIG_DIRS: string;
 	export const npm_config_cache: string;
 	export const XDG_SESSION_PATH: string;
 	export const XDG_MENU_PREFIX: string;
-	export const no_proxy: string;
 	export const __GL_MaxFramesAllowed: string;
 	export const GNOME_KEYRING_CONTROL: string;
 	export const HISTSIZE: string;
@@ -59,23 +57,18 @@ declare module '$env/static/private' {
 	export const XAUTHORITY: string;
 	export const XDG_GREETER_DATA_DIR: string;
 	export const HOME: string;
-	export const LANG: string;
 	export const LC_PAPER: string;
+	export const LANG: string;
 	export const XDG_CURRENT_DESKTOP: string;
 	export const npm_package_version: string;
-	export const VTE_VERSION: string;
 	export const XDG_SEAT_PATH: string;
-	export const GNOME_TERMINAL_SCREEN: string;
 	export const INIT_CWD: string;
 	export const npm_lifecycle_script: string;
 	export const XDG_SESSION_CLASS: string;
-	export const ANDROID_HOME: string;
 	export const TERM: string;
 	export const npm_package_name: string;
 	export const npm_config_prefix: string;
 	export const USER: string;
-	export const NO_PROXY: string;
-	export const GNOME_TERMINAL_SERVICE: string;
 	export const DISPLAY: string;
 	export const npm_lifecycle_event: string;
 	export const SHLVL: string;
@@ -97,9 +90,10 @@ declare module '$env/static/private' {
 	export const GDMSESSION: string;
 	export const DBUS_SESSION_BUS_ADDRESS: string;
 	export const npm_config_global_prefix: string;
+	export const GIO_LAUNCHED_DESKTOP_FILE_PID: string;
 	export const npm_node_execpath: string;
+	export const GIO_LAUNCHED_DESKTOP_FILE: string;
 	export const LC_NUMERIC: string;
-	export const OLDPWD: string;
 }
 
 /**
@@ -133,12 +127,10 @@ declare module '$env/dynamic/private' {
 		npm_command: string;
 		SESSION_MANAGER: string;
 		npm_config_userconfig: string;
-		COLORTERM: string;
 		XDG_CONFIG_DIRS: string;
 		npm_config_cache: string;
 		XDG_SESSION_PATH: string;
 		XDG_MENU_PREFIX: string;
-		no_proxy: string;
 		__GL_MaxFramesAllowed: string;
 		GNOME_KEYRING_CONTROL: string;
 		HISTSIZE: string;
@@ -162,23 +154,18 @@ declare module '$env/dynamic/private' {
 		XAUTHORITY: string;
 		XDG_GREETER_DATA_DIR: string;
 		HOME: string;
-		LANG: string;
 		LC_PAPER: string;
+		LANG: string;
 		XDG_CURRENT_DESKTOP: string;
 		npm_package_version: string;
-		VTE_VERSION: string;
 		XDG_SEAT_PATH: string;
-		GNOME_TERMINAL_SCREEN: string;
 		INIT_CWD: string;
 		npm_lifecycle_script: string;
 		XDG_SESSION_CLASS: string;
-		ANDROID_HOME: string;
 		TERM: string;
 		npm_package_name: string;
 		npm_config_prefix: string;
 		USER: string;
-		NO_PROXY: string;
-		GNOME_TERMINAL_SERVICE: string;
 		DISPLAY: string;
 		npm_lifecycle_event: string;
 		SHLVL: string;
@@ -200,9 +187,10 @@ declare module '$env/dynamic/private' {
 		GDMSESSION: string;
 		DBUS_SESSION_BUS_ADDRESS: string;
 		npm_config_global_prefix: string;
+		GIO_LAUNCHED_DESKTOP_FILE_PID: string;
 		npm_node_execpath: string;
+		GIO_LAUNCHED_DESKTOP_FILE: string;
 		LC_NUMERIC: string;
-		OLDPWD: string;
 		[key: string]: string | undefined;
 	}
 }

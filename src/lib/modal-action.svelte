@@ -15,6 +15,9 @@
     show(): void {
       showSheet = true;
     },
+    showWithData(data: object) {
+      showSheet = true;
+    },
     hide(): void {
       showSheet = false;
     }
