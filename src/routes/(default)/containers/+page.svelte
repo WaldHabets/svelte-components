@@ -82,39 +82,39 @@
         Open action modal
       </button>
       <ModalAction title="This is an 'Action modal'!" bind:sheet={modalAction}>
-        <button class="button big square icon">
+        <button class="button --big --square --icon">
           <svg viewBox="0 0 24 24">
             <path d="{mdiContentCopy}"/>
           </svg>
         </button>
-        <button class="button big square icon">
+        <button class="button --big --square --icon">
           <svg viewBox="0 0 24 24">
             <path d="{mdiContentPaste}"/>
           </svg>
         </button>
-        <button class="button big square icon">
+        <button class="button --big --square --icon">
           <svg viewBox="0 0 24 24">
             <path d="{mdiContentCut}"/>
           </svg>
         </button>
         <div>
-          <button class="button big square connect-end icon">
+          <button class="button --big --square --connect-end --icon">
             <svg viewBox="0 0 24 24">
               <path d="{mdiAlignHorizontalLeft}"/>
             </svg>
           </button><!--
-          --><button class="button big square connect-start connect-end icon">
+          --><button class="button --big --square --connect-start --connect-end --icon">
             <svg viewBox="0 0 24 24">
               <path d="{mdiAlignHorizontalCenter}"/>
             </svg>
           </button><!--
-          --><button class="button big square connect-start icon">
+          --><button class="button --big --square --connect-start --icon">
             <svg viewBox="0 0 24 24">
               <path d="{mdiAlignHorizontalRight}"/>
             </svg>
           </button>
         </div>
-        <button class="button alert big square icon" on:click={modalDeleteAlert.show}>
+        <button class="button --alert --big --square --icon" on:click={modalDeleteAlert.show}>
           <svg viewBox="0 0 24 24">
             <path d="{mdiDelete}"/>
           </svg>

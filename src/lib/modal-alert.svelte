@@ -61,16 +61,16 @@
         <slot></slot>
       </div>
       <div class="option-sheet-buttons">
-        <button class="option-sheet-button --button --big" on:click={onCancelAction}>
+        <button class="option-sheet-button button --big" on:click={onCancelAction}>
           {cancelAction}
         </button>
         {#if negativeAction}
-          <button class="option-sheet-button --button --alert --big" on:click={onNegativeAction}>
+          <button class="option-sheet-button button --alert --big" on:click={onNegativeAction}>
             {negativeAction}
           </button>
         {/if}
         {#if positiveAction}
-          <button class="option-sheet-button --button --themed --big" on:click={onPositiveAction}>
+          <button class="option-sheet-button button --themed --big" on:click={onPositiveAction}>
             {positiveAction}
           </button>
         {/if}
@@ -105,8 +105,8 @@
     .option-sheet {
       width: calc(100% - $modal-h-margin*2);
 
-      background: white;
-      border: 2px solid #bbb;
+      background: var(--pt-container-bg);
+      border: 2px solid var(--pt-border);
       border-radius: 8px;
       box-sizing: border-box;
       max-height: calc(100vh - $modal-v-margin*2);

@@ -29,7 +29,7 @@
   <div class="option-sheet centered-page small container dark" transition:slide>
     <header class="option-sheet-header">
       <h1>{title}</h1>
-      <button class="option-sheet-cancel" on:click={sheet.hide}>
+      <button class="flat-button option-sheet-cancel" on:click={sheet.hide}>
         <svg viewBox="0 0 24 24">
           <path d="{mdiClose}" />
         </svg>
@@ -82,7 +82,7 @@
       font-weight: bold;
       text-align: center;
       line-height: 24px;
-      color: white;
+      color: var(--pt-text);
       h1 {
         flex-grow: 1;
         margin-left: 40px;
@@ -95,11 +95,11 @@
         height: 32px;
         padding: 4px;
         border-radius: 50%;
-        background: rgba(white, 0.1);
+        //background: rgba(white, 0.1);
         border: none;
 
         &:hover {
-          background: rgba(black, 0.3);
+          //background: rgba(black, 0.3);
           cursor: pointer;
         }
 

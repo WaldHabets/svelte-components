@@ -1,4 +1,8 @@
 <script lang="ts">
+  /** Components */
+  import Breadcrumbs from "$lib/breadcrumbs.svelte";
+
+  /** Icons */
   import { mdiDotsVertical} from "@mdi/js";
 </script>
 
@@ -208,6 +212,26 @@
           <span class="slider round"></span>
         </label>
       </div>
+    </div>
+  </section>
+  <section class="container-wrapper">
+    <header class="container-header">
+      <h1>Breadcrumbs</h1>
+    </header>
+    <div class="container">
+      <Breadcrumbs breadcrumbs="{
+        [
+          {
+            label: 'home',
+            href: '#'
+          },
+          {
+            label: 'Controls',
+            href: '/controls'
+          }
+        ]
+      }">
+      </Breadcrumbs>
     </div>
   </section>
 </div>
