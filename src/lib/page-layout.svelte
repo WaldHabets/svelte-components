@@ -14,7 +14,9 @@
     /** Icons */
     import { mdiArrowLeft, mdiMenu } from "@mdi/js";
     //import { SidebarGroup } from "./sidebar-contents";
-    import { page } from "$app/stores";
+    import { type Page } from "@sveltejs/kit";
+    import { type Readable } from "svelte/store";
+    export let page: Readable<Page>;
 
     /** Locals */
     let sidebarState: '--expanded' | '--collapsed' = '--collapsed';

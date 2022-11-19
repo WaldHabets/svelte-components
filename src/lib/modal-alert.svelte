@@ -9,9 +9,10 @@
   export let showModal: boolean = false;
   export let param: object = null;
 
-  export let cancelAction: string = "";
+  export let cancelAction: false|string = false;
   export let negativeAction: false|string = false;
   export let positiveAction: false|string = false;
+  $: buttons = !cancelAction || !negativeAction || !positiveAction;
 
   export const modal: Modal =
     {
@@ -60,10 +61,13 @@
       <div class="option-sheet-content">
         <slot></slot>
       </div>
+      {#if buttons}
       <div class="option-sheet-buttons">
-        <button class="option-sheet-button button --big" on:click={onCancelAction}>
-          {cancelAction}
-        </button>
+        {#if cancelAction}
+          <button class="option-sheet-button button --big" on:click={onCancelAction}>
+            {cancelAction}
+          </button>
+        {/if}
         {#if negativeAction}
           <button class="option-sheet-button button --alert --big" on:click={onNegativeAction}>
             {negativeAction}
@@ -75,6 +79,7 @@
           </button>
         {/if}
       </div>
+      {/if}
     </div>
   </div>
 {/if}
@@ -114,7 +119,8 @@
       margin: 0 auto;
       height: min-content;
       box-shadow: 0 0 16px -8px black;
-
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
 
       .option-sheet-header {
@@ -124,6 +130,7 @@
         box-sizing: border-box;
         padding: 16px 16px 8px 16px;
         overflow: hidden;
+        flex-shrink: 0;
 
         /** font */
         font-size: 20px;
@@ -173,6 +180,7 @@
         justify-content: space-between;
         padding: $button-gap;
         gap: $button-gap;
+        flex-shrink: 0;
         .option-sheet-button {
           flex-grow: 1;
           flex-basis: 0;

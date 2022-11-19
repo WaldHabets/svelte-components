@@ -1,5 +1,6 @@
 <script lang="ts">
     /** Layout */
+    import { page } from "$app/stores"
     import PageLayout from "../../lib/page-layout.svelte";
     /** Sidebar */
     //import { type SidebarGroup, type SidebarItem} from "../../lib/sidebar-contents";
@@ -76,7 +77,7 @@
     ];
 </script>
 
-<PageLayout sidebar={sidebarContents}>
+<PageLayout sidebar={sidebarContents} page={page}>
 <!--    <svelte:fragment slot="sidebar-nav">-->
 <!--        <SidebarGroup>-->
 <!--            <SidebarTab icon={mdiHome} href="/nested" title="Nested pages" />-->
