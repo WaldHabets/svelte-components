@@ -4,7 +4,14 @@
   import ModalAction from "../../../lib/modal-action.svelte";
   import ModalAlert from "../../../lib/modal-alert.svelte";
   /** Icons */
-  import { mdiArrowRight, mdiQrcode, mdiOpenInNew, mdiCardMultipleOutline, mdiFormatQuoteClose, mdiDotsVertical } from "@mdi/js";
+  import {
+    mdiArrowRight,
+    mdiQrcode,
+    mdiOpenInNew,
+    mdiCardMultipleOutline,
+    mdiFormatQuoteClose,
+    mdiDotsVertical,
+  } from "@mdi/js";
 
   let sheet;
   let modal;
@@ -13,7 +20,7 @@
     showSheet = true;
     console.log(showSheet);
   }
-  $: console.log(`showSheet is ${showSheet}`)
+  $: console.log(`showSheet is ${showSheet}`);
 </script>
 
 <div class="centered-page small">
@@ -23,7 +30,14 @@
   <section class="container-wrapper">
     <header class="container-header">
       <h1>This is a list-box with active list-items</h1>
-      <p>As you can see a list box is similar to a normal container. Do note that the container should contain noting else but the list items and maybe a control header. The whole box should be interactive and you should use an appropriate icon to hint at the behavour of the element. The example below shows different types that are mixed, but to to avoid this in practice.</p>
+      <p>
+        As you can see a list box is similar to a normal container. Do note that
+        the container should contain noting else but the list items and maybe a
+        control header. The whole box should be interactive and you should use
+        an appropriate icon to hint at the behavour of the element. The example
+        below shows different types that are mixed, but to to avoid this in
+        practice.
+      </p>
     </header>
     <ul class="list-box">
       <ListItemActive iconEnd={mdiArrowRight}>
@@ -33,10 +47,12 @@
         When the content opens in a new tab or window, use the open-in-new icon.
       </ListItemActive>
       <ListItemActive iconEnd={mdiCardMultipleOutline}>
-        Use something like card-multiple to indicate the content will open in a modal or dialog.
+        Use something like card-multiple to indicate the content will open in a
+        modal or dialog.
       </ListItemActive>
       <ListItemActive iconStart={mdiQrcode} iconEnd={mdiCardMultipleOutline}>
-        You can also show icons in front of the label that are linked to the actions. This will probably open a qrcode inside a dialog.
+        You can also show icons in front of the label that are linked to the
+        actions. This will probably open a qrcode inside a dialog.
       </ListItemActive>
     </ul>
   </section>
@@ -49,15 +65,20 @@
         Show qr-code
       </ListItemActive>
       <ListItemActive iconEnd={mdiArrowRight}>Settings</ListItemActive>
-      <ListItemActive iconEnd="{mdiArrowRight}">Profile</ListItemActive>
-      <ListItemActive iconEnd="{mdiArrowRight}">Social</ListItemActive>
-      <ListItemActive iconStart="{mdiFormatQuoteClose}" iconEnd="{mdiOpenInNew}">Sources</ListItemActive>
+      <ListItemActive iconEnd={mdiArrowRight}>Profile</ListItemActive>
+      <ListItemActive iconEnd={mdiArrowRight}>Social</ListItemActive>
+      <ListItemActive iconStart={mdiFormatQuoteClose} iconEnd={mdiOpenInNew}
+        >Sources</ListItemActive
+      >
     </ul>
   </section>
   <section class="container-wrapper">
     <header class="container-header">
       <h1>This is a list-box with inactive list-items</h1>
-      <p>The list item itself should not have any interaction bounded to it, but it might contain interactive elements.</p>
+      <p>
+        The list item itself should not have any interaction bounded to it, but
+        it might contain interactive elements.
+      </p>
     </header>
     <ul class="list-box">
       <li class="list-item static">
@@ -65,17 +86,13 @@
           <p>This item has some action buttons</p>
           <button class="button list-button" on:click={sheet.show}>
             <svg viewBox="0 0 24 24">
-              <path d="{mdiDotsVertical}" />
+              <path d={mdiDotsVertical} />
             </svg>
           </button>
         </div>
-        <ModalAction title="This item has some action buttons" bind:sheet={sheet}>
-          <button class="flat-button big">
-            delete
-          </button>
-          <button class="flat-button big square">
-
-          </button>
+        <ModalAction title="This item has some action buttons" bind:sheet>
+          <button class="flat-button big"> delete </button>
+          <button class="flat-button big square" />
         </ModalAction>
       </li>
       <li class="list-item flex-row">
@@ -85,25 +102,26 @@
         </button>
         <ModalAlert
           title="This is a modal"
-          bind:modal={modal}
+          bind:modal
           cancelAction="Cancel action"
           negativeAction="Negative action"
-          positiveAction="Positive action">
+          positiveAction="Positive action"
+        >
           <svelte:fragment slot="content">
-            It should have at most three buttons. These can be a negative action, positive action or cancel action. Labels for each of these actions should be short and descriptive and not contain any imagery.
+            It should have at most three buttons. These can be a negative
+            action, positive action or cancel action. Labels for each of these
+            actions should be short and descriptive and not contain any imagery.
           </svelte:fragment>
         </ModalAlert>
       </li>
       <li class="list-item split-row">
         <div class="content flex-row">
           <p>This button has a combination</p>
-          <button class="button" on:click={sheet.show}>
-            Open
-          </button>
+          <button class="button" on:click={sheet.show}> Open </button>
         </div>
         <button class="button list-button" on:click={sheet.show}>
           <svg viewBox="0 0 24 24">
-            <path d="{mdiDotsVertical}" />
+            <path d={mdiDotsVertical} />
           </svg>
         </button>
       </li>
@@ -112,7 +130,6 @@
     </ul>
   </section>
 </div>
-
 
 <style lang="scss">
   @import "../../../assets/style/pt-theme-colours";
@@ -132,7 +149,6 @@
         padding-right: 8px;
         margin-right: 8px;
       }
-
     }
     .flex-row {
       display: flex;

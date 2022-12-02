@@ -25,7 +25,7 @@
 </script>
 
 {#if showSheet}
-<div class="option-sheet-backdrop"  on:click|self={sheet.hide}>
+<div class="option-sheet-backdrop"  on:click|self={sheet.hide} on:keyup>
   <div class="option-sheet centered-page small container dark" transition:slide>
     <header class="option-sheet-header">
       <h1>{title}</h1>
@@ -95,18 +95,16 @@
         height: 32px;
         padding: 4px;
         border-radius: 50%;
-        //background: rgba(white, 0.1);
         border: none;
 
         &:hover {
-          //background: rgba(black, 0.3);
           cursor: pointer;
         }
 
         svg {
           width: 24px;
           height: 24px;
-          fill: currentColor;
+          fill: var(--pt-text);
         }
       }
     }

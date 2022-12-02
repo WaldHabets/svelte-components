@@ -3,17 +3,13 @@
   import Breadcrumbs from "$lib/breadcrumbs.svelte";
 
   /** Icons */
-  import { mdiDotsVertical} from "@mdi/js";
+  import { mdiDotsVertical } from "@mdi/js";
 </script>
 
 <div class="centered-page small">
   <header class="page-title">
-    <h1>
-      Controls
-    </h1>
-    <p>
-      Various control elements.
-    </p>
+    <h1>Controls</h1>
+    <p>Various control elements.</p>
   </header>
   <section class="container-wrapper">
     <header class="container-header">
@@ -27,8 +23,14 @@
       <div class="control-example">
         <div>
           <h2>Themed button</h2>
-          <p>Use these buttons to highlight the most important actions, or to highlight a positive action.</p>
-          <p>Classes: <code>button</code>, <code>--themed</code>, <code>--medium</code></p>
+          <p>
+            Use these buttons to highlight the most important actions, or to
+            highlight a positive action.
+          </p>
+          <p>
+            Classes: <code>button</code>, <code>--themed</code>,
+            <code>--medium</code>
+          </p>
         </div>
         <button class="button --themed --medium">Button</button>
       </div>
@@ -39,8 +41,14 @@
       <div class="control-example">
         <div>
           <h2>Alert button</h2>
-          <p>Alert buttons should be used to indicate a damaging or unreversable action.</p>
-          <p>Classes: <code>button</code>, <code>alert</code>, <code>medium</code></p>
+          <p>
+            Alert buttons should be used to indicate a damaging or unreversable
+            action.
+          </p>
+          <p>
+            Classes: <code>button</code>, <code>alert</code>,
+            <code>medium</code>
+          </p>
         </div>
         <button class="button --alert --medium">Button</button>
       </div>
@@ -56,7 +64,7 @@
         <p>Flat icon button</p>
         <button class="flat-button --medium --icon --square">
           <svg viewBox="0 0 24 24">
-            <path d="{mdiDotsVertical}" />
+            <path d={mdiDotsVertical} />
           </svg>
         </button>
       </div>
@@ -65,7 +73,7 @@
         <button class="flat-button flex default-size --medium --icon">
           <label>Button</label>
           <svg viewBox="0 0 24 24">
-            <path d="{mdiDotsVertical}" />
+            <path d={mdiDotsVertical} />
           </svg>
         </button>
       </div>
@@ -82,10 +90,10 @@
     <div class="container">
       <div class="control-example">
         <p>Dropdown</p>
-          <select class="alt-select">
-            <option>Option 1</option>
-            <option>Option 2</option>
-          </select>
+        <select class="alt-select">
+          <option>Option 1</option>
+          <option>Option 2</option>
+        </select>
       </div>
       <div class="control-example">
         <p>Dropdown (disabled)</p>
@@ -101,26 +109,51 @@
       <h1>Inputs</h1>
     </header>
     <div class="container">
-        <div>
-          <label class="input-label" for="input">Text Input</label>
-          <input class="text-input --medium" id="input" placeholder="Text input">
-        </div>
-        <div>
-          <label class="input-label" for="input-d">Disabled Input</label>
-          <input class="text-input --medium" id="input-d" placeholder="Text input (disabled)" disabled>
-        </div>
-        <div>
-          <label class="input-label" for="input-r">Required Text Input</label>
-          <input class="text-input-v medium" id="input-r" placeholder="Text input (required)" required><span></span>
-        </div>
-        <div>
-          <label class="input-label" for="input-v">Validated Text Input (email)</label>
-          <input class="text-input-v --medium" id="input-v" type="email" placeholder="Text input (invalid)"><span></span>
-        </div>
+      <div>
+        <label class="input-label" for="input">Text Input</label>
+        <input
+          class="text-input --medium"
+          id="input"
+          placeholder="Text input"
+        />
+      </div>
+      <div>
+        <label class="input-label" for="input-d">Disabled Input</label>
+        <input
+          class="text-input --medium"
+          id="input-d"
+          placeholder="Text input (disabled)"
+          disabled
+        />
+      </div>
+      <div>
+        <label class="input-label" for="input-r">Required Text Input</label>
+        <input
+          class="text-input-v medium"
+          id="input-r"
+          placeholder="Text input (required)"
+          required
+        /><span />
+      </div>
+      <div>
+        <label class="input-label" for="input-v"
+          >Validated Text Input (email)</label
+        >
+        <input
+          class="text-input-v --medium"
+          id="input-v"
+          type="email"
+          placeholder="Text input (invalid)"
+        /><span />
+      </div>
       <div>
         <label class="input-label" for="input-search">Input with button</label>
         <form class="search-bar">
-          <input class="text-input --connect-end --medium" id="input-search" placeholder="Search"><!--
+          <input
+            class="text-input --connect-end --medium"
+            id="input-search"
+            placeholder="Search"
+          /><!--
         --><button class="button --connect-start --medium">
             Search
           </button>
@@ -134,22 +167,22 @@
     </header>
     <div class="container">
       <label for="check1" class="radio-group">
-        <input type="checkbox" id="check1" name="radio-group" value="HTML">
+        <input type="checkbox" id="check1" name="radio-group" value="HTML" />
         <span class="radio-label">Option 1</span>
       </label>
       <label for="check2" class="radio-group">
-        <input type="checkbox" id="check2" name="radio-group" value="HTML">
+        <input type="checkbox" id="check2" name="radio-group" value="HTML" />
         <span class="radio-label">Option 2</span>
       </label>
       <label for="check3" class="radio-group">
-        <input type="checkbox" id="check3" name="radio-group" value="HTML">
+        <input type="checkbox" id="check3" name="radio-group" value="HTML" />
         <span class="radio-label">
           <span class="radio-title">Option 3</span>
           <span class="radio-info">You can provide extra information</span>
         </span>
       </label>
       <label for="check4" class="radio-group">
-        <input type="checkbox" id="check4" name="radio-group" value="HTML">
+        <input type="checkbox" id="check4" name="radio-group" value="HTML" />
         <span class="radio-label">
           <span class="radio-title">Option 4</span>
           <span class="radio-info">This is information about option 4</span>
@@ -163,22 +196,22 @@
     </header>
     <div class="container">
       <label for="radio1" class="radio-group">
-        <input type="radio" id="radio1" name="radio-group" value="HTML">
+        <input type="radio" id="radio1" name="radio-group" value="HTML" />
         <span class="radio-label">Option 1</span>
       </label>
       <label for="radio2" class="radio-group">
-        <input type="radio" id="radio2" name="radio-group" value="HTML">
+        <input type="radio" id="radio2" name="radio-group" value="HTML" />
         <span class="radio-label">Option 2</span>
       </label>
       <label for="radio3" class="radio-group">
-        <input type="radio" id="radio3" name="radio-group" value="HTML">
+        <input type="radio" id="radio3" name="radio-group" value="HTML" />
         <span class="radio-label">
           <span class="radio-title">Option 3</span>
           <span class="radio-info">You can provide extra information</span>
         </span>
       </label>
       <label for="radio4" class="radio-group">
-        <input type="radio" id="radio4" name="radio-group" value="HTML">
+        <input type="radio" id="radio4" name="radio-group" value="HTML" />
         <span class="radio-label">
           <span class="radio-title">Option 4</span>
           <span class="radio-info">This is information about option 4</span>
@@ -194,22 +227,22 @@
       <div class="switch-example">
         <p>Enabled</p>
         <label class="switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
+          <input type="checkbox" />
+          <span class="slider round" />
         </label>
       </div>
       <div class="switch-example">
         <p>Disabled, toggle off</p>
         <label class="switch">
-          <input type="checkbox" disabled>
-          <span class="slider round"></span>
+          <input type="checkbox" disabled />
+          <span class="slider round" />
         </label>
       </div>
       <div class="switch-example">
         <p>Disabled, toggle on</p>
         <label class="switch">
-          <input type="checkbox" disabled checked>
-          <span class="slider round"></span>
+          <input type="checkbox" disabled checked />
+          <span class="slider round" />
         </label>
       </div>
     </div>
@@ -219,19 +252,18 @@
       <h1>Breadcrumbs</h1>
     </header>
     <div class="container">
-      <Breadcrumbs breadcrumbs="{
-        [
+      <Breadcrumbs
+        breadcrumbs={[
           {
-            label: 'home',
-            href: '#'
+            label: "home",
+            href: "#",
           },
           {
-            label: 'Controls',
-            href: '/controls'
-          }
-        ]
-      }">
-      </Breadcrumbs>
+            label: "Controls",
+            href: "/controls",
+          },
+        ]}
+      />
     </div>
   </section>
 </div>
@@ -267,8 +299,7 @@
     justify-content: space-between;
   }
   .alt-input {
-    box-shadow:
-            0 1px 3px -1px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.7);
     padding: 8px;
     font-size: 16px;
     border-radius: 4px;
@@ -284,14 +315,13 @@
     border-radius: 4px;
     text-decoration: none;
     border: 1px solid #bbb;
-    box-shadow:
-            0 2px 6px -2px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.7);
     background: white;
     background: linear-gradient(0deg, #e5e5e5 35%, white 100%);
     //background: #bbb;
-    -webkit-transition: .2s;
-    -moz-transition: .2s;
-    transition: .2s linear;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    transition: 0.2s linear;
     &:hover {
       cursor: pointer;
       //background: #f5f5f5;
@@ -304,26 +334,25 @@
     }
     &:disabled {
       box-shadow: none;
-      background: rgba(236,239,241,1);
-      border-color: rgba(176,190,197,1);
+      background: rgba(236, 239, 241, 1);
+      border-color: rgba(176, 190, 197, 1);
 
-      color: rgba(176,190,197,1);
+      color: rgba(176, 190, 197, 1);
       cursor: no-drop;
     }
   }
   .alt-input {
-    box-shadow:
-            0 1px 3px -1px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.7);
     background: #e5e5e5;
   }
   .text-input,
-  .text-input-v{
+  .text-input-v {
     margin-bottom: 8px;
   }
   .radio-group {
     display: flex;
     padding: 8px;
-    accent-color: #602F61;
+    accent-color: #602f61;
     font-size: 16px;
     font-weight: normal;
     align-items: center;
@@ -365,5 +394,4 @@
       width: content-box;
     }
   }
-
 </style>

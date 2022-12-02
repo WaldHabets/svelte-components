@@ -5,8 +5,10 @@
   import SidebarTab from "../../../lib/sidebar-tab.svelte";
   /** Icons */
   import {
-    mdiClipboardAccountOutline, mdiHomeOutline,
-    mdiTextBoxMultipleOutline, mdiClose
+    mdiClipboardAccountOutline,
+    mdiHomeOutline,
+    mdiTextBoxMultipleOutline,
+    mdiClose,
   } from "@mdi/js";
 </script>
 
@@ -14,13 +16,12 @@
   <template slot="sidebar-end">
     <button class="flat-button">
       <svg viewBox="0 0 24 24">
-        <path d="{mdiClose}" />
+        <path d={mdiClose} />
       </svg>
     </button>
   </template>
-  <svelte:fragment slot="sidebar-nav">
-  </svelte:fragment>
-  <slot slot="main"></slot>
+  <svelte:fragment slot="sidebar-nav" />
+  <slot slot="main" />
 </PageLayout>
 
 <style lang="scss">

@@ -1,18 +1,22 @@
 <script lang="ts">
   /** Icons */
-  import {
-    mdiMagnify
-  } from "@mdi/js";
+  import { mdiMagnify } from "@mdi/js";
 </script>
 
 <header class="search-wrapper">
   <form class="search-bar centered-page small">
-    <input class="text-input connect-end medium" id="input-search" placeholder="Search"><!--
-        --><button class="button connect-start default-size icon medium">
-    <svg viewBox="0 0 24 24">
-      <path d={mdiMagnify} />
-    </svg>
-  </button>
+    <input
+      class="text-input connect-end medium"
+      id="input-search"
+      placeholder="Search"
+    /><!--
+        --><button
+      class="button connect-start default-size icon medium"
+    >
+      <svg viewBox="0 0 24 24">
+        <path d={mdiMagnify} />
+      </svg>
+    </button>
   </form>
 </header>
 

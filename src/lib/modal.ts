@@ -3,4 +3,3 @@ export default interface Modal {
   showWithData(data: object): void;
   hide(): void;
 }
-

@@ -7,7 +7,7 @@
     label: string;
     href: string;
   }
-  export let breadcrumbs: Breadcrumb []= [];
+  export let breadcrumbs: Breadcrumb[] = [];
 </script>
 
 <nav class="breadcrumbs-container">
@@ -31,7 +31,7 @@
     box-shadow: 0 0 4px -1px rgba(0, 0, 0, 0.7);
 
     *:not(:last-child)::after {
-      content: "/"
+      content: "/";
     }
   }
   .breadcrumb {

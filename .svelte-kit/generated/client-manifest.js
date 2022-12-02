@@ -13,20 +13,22 @@ export { matchers } from './client-matchers.js';
 	() => import('./nodes/10'),
 	() => import('./nodes/11'),
 	() => import('./nodes/12'),
-	() => import('./nodes/13')];
+	() => import('./nodes/13'),
+	() => import('./nodes/14')];
 
 			export const server_loads = [];
 
 			export const dictionary = {
 	"(default)": [6,[3]],
 	"(context)/context": [5,[2]],
-	"(default)/containers": [7,[3]],
-	"(default)/controls": [8,[3]],
-	"(default)/layout": [9,[3]],
-	"(default)/list": [10,[3]],
-	"(default)/search": [11,[3]],
-	"(default)/views": [12,[3]],
-	"(nested)/nested": [13,[4]]
+	"(default)/colour": [7,[3]],
+	"(default)/containers": [8,[3]],
+	"(default)/controls": [9,[3]],
+	"(default)/layout": [10,[3]],
+	"(default)/list": [11,[3]],
+	"(default)/search": [12,[3]],
+	"(default)/views": [13,[3]],
+	"(nested)/nested": [14,[4]]
 };
 
 			export const hooks = {

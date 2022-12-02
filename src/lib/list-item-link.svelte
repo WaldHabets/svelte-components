@@ -4,13 +4,10 @@
 
 <script lang="ts">
   /** Icons */
-  import {
-    mdiArrowRight,
-    mdiOpenInNew
-  } from "@mdi/js";
+  import { mdiArrowRight, mdiOpenInNew } from "@mdi/js";
 
   /** events */
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
   /** Exports */
@@ -19,11 +16,11 @@
   export let href: false | string = false;
 
   function clickHandler() {
-    dispatch('navigate')
+    dispatch("navigate");
   }
 </script>
 
-<li class="list-item active" on:click={clickHandler}>
+<li class="list-item active" on:click={clickHandler} on:keyup>
   <a {href}>
     {#if iconStart}
       <div class="label-group">

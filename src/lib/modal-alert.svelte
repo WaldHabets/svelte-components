@@ -1,99 +1,111 @@
 <script lang="ts">
   import type Modal from "./modal";
   /** Transitions */
-  import { slide } from 'svelte/transition';
+  import { slide } from "svelte/transition";
   /** Icons */
-  import {mdiClose} from "@mdi/js";
+  import { mdiClose } from "@mdi/js";
   /** Properties */
   export let title: string = "";
   export let showModal: boolean = false;
   export let param: object = null;
 
-  export let cancelAction: false|string = false;
-  export let negativeAction: false|string = false;
-  export let positiveAction: false|string = false;
+  export let cancelAction: false | string = false;
+  export let negativeAction: false | string = false;
+  export let positiveAction: false | string = false;
   $: buttons = !cancelAction || !negativeAction || !positiveAction;
 
-  export const modal: Modal =
-    {
-      show(): void {
-        showModal = true;
-      },
-      showWithData(data: object): void {
-        showModal = true;
-        param = data;
-      },
-      hide(): void {
-        showModal = false;
-      }
-    };
+  export const modal: Modal = {
+    show(): void {
+      showModal = true;
+    },
+    showWithData(data: object): void {
+      showModal = true;
+      param = data;
+    },
+    hide(): void {
+      showModal = false;
+    },
+  };
 
-    /** events */
-    import { createEventDispatcher } from 'svelte';
+  /** events */
+  import { createEventDispatcher } from "svelte";
 
-    const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
-    function onCancelAction() {
-      modal.hide();
-      dispatch('cancel', param);
-    }
-    function onNegativeAction() {
-      modal.hide();
-      dispatch('negative', param);
-    }
-    function onPositiveAction() {
-      modal.hide();
-      dispatch('positive', param);
-    }
+  function onCancelAction() {
+    modal.hide();
+    dispatch("cancel", param);
+  }
+  function onNegativeAction() {
+    modal.hide();
+    dispatch("negative", param);
+  }
+  function onPositiveAction() {
+    modal.hide();
+    dispatch("positive", param);
+  }
 </script>
 
 {#if showModal}
-  <div class="option-sheet-backdrop"  on:click|self={onCancelAction}>
+  <div class="option-sheet-backdrop" on:click|self={onCancelAction} on:keyup>
     <div class="option-sheet" transition:slide>
       <header class="option-sheet-header">
         <h1>{title}</h1>
-        <button class="option-sheet-cancel" on:click={onCancelAction}>
+        <button
+          class="flat-button option-sheet-cancel"
+          on:click={onCancelAction}
+        >
           <svg viewBox="0 0 24 24">
-            <path d="{mdiClose}" />
+            <path d={mdiClose} />
           </svg>
         </button>
       </header>
       <div class="option-sheet-content">
-        <slot></slot>
+        <slot />
       </div>
       {#if buttons}
-      <div class="option-sheet-buttons">
-        {#if cancelAction}
-          <button class="option-sheet-button button --big" on:click={onCancelAction}>
-            {cancelAction}
-          </button>
-        {/if}
-        {#if negativeAction}
-          <button class="option-sheet-button button --alert --big" on:click={onNegativeAction}>
-            {negativeAction}
-          </button>
-        {/if}
-        {#if positiveAction}
-          <button class="option-sheet-button button --themed --big" on:click={onPositiveAction}>
-            {positiveAction}
-          </button>
-        {/if}
-      </div>
+        <div class="option-sheet-buttons">
+          {#if cancelAction}
+            <button
+              class="option-sheet-button button --big"
+              on:click={onCancelAction}
+            >
+              {cancelAction}
+            </button>
+          {/if}
+          {#if negativeAction}
+            <button
+              class="option-sheet-button button --alert --big"
+              on:click={onNegativeAction}
+            >
+              {negativeAction}
+            </button>
+          {/if}
+          {#if positiveAction}
+            <button
+              class="option-sheet-button button --themed --big"
+              on:click={onPositiveAction}
+            >
+              {positiveAction}
+            </button>
+          {/if}
+        </div>
       {/if}
     </div>
   </div>
 {/if}
 
 <style lang="scss">
-
   $min-button-size: 178px;
   $button-gap: 8px;
   $modal-h-margin: 16px;
   $modal-v-margin: 32px;
 
-  $modal-width: $min-button-size*3 + $button-gap*4;
-  $threshold-3-buttons: $min-button-size*3 + $button-gap*4 + $modal-h-margin*2;
-  $threshold-2-buttons: $min-button-size*2 + $button-gap*3 + $modal-h-margin*2;
+  $modal-width: $min-button-size * 3 + $button-gap * 4;
+  $threshold-3-buttons: $min-button-size * 3 + $button-gap * 4 + $modal-h-margin *
+    2;
+  $threshold-2-buttons: $min-button-size * 2 + $button-gap * 3 + $modal-h-margin *
+    2;
 
   .option-sheet-backdrop {
     position: absolute;
@@ -101,20 +113,20 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     z-index: 100001;
 
     display: flex;
     align-items: center;
 
     .option-sheet {
-      width: calc(100% - $modal-h-margin*2);
+      width: calc(100% - $modal-h-margin * 2);
 
       background: var(--pt-container-bg);
       border: 2px solid var(--pt-border);
       border-radius: 8px;
       box-sizing: border-box;
-      max-height: calc(100vh - $modal-v-margin*2);
+      max-height: calc(100vh - $modal-v-margin * 2);
       max-width: $modal-width;
       margin: 0 auto;
       height: min-content;
@@ -145,18 +157,16 @@
           height: 32px;
           padding: 4px;
           border-radius: 50%;
-          background: rgba(black, 0.1);
           border: none;
 
           &:hover {
-            background: rgba(black, 0.3);
             cursor: pointer;
           }
 
           svg {
             width: 24px;
             height: 24px;
-            fill: currentColor;
+            fill: var(--pt-text);
           }
         }
       }
@@ -174,7 +184,7 @@
       }
       .option-sheet-buttons {
         /** border */
-        border-top: 2px solid #bbb;
+        border-top: 2px solid var(--pt-border);
         /** layout */
         display: flex;
         justify-content: space-between;

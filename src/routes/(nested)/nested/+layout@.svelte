@@ -3,13 +3,14 @@
   import PageLayout from "../../../lib/page-layout.svelte";
   /** Icons */
   import {
-    mdiClipboardAccountOutline, mdiHomeOutline,
-    mdiTextBoxMultipleOutline
+    mdiClipboardAccountOutline,
+    mdiHomeOutline,
+    mdiTextBoxMultipleOutline,
   } from "@mdi/js";
 </script>
 
 <PageLayout backNavigation="/">
-  <slot slot="main"></slot>
+  <slot slot="main" />
 </PageLayout>
 
 <style lang="scss">
