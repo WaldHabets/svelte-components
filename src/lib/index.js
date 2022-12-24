@@ -8,7 +8,10 @@ import ModalPicker from "./modal-picker.svelte";
 import PageLayout from "./page-layout.svelte";
 import Placeholder from "./placeholder.svelte";
 import SidebarTab from "./sidebar-tab.svelte";
+import * as SidebarTypes from "$lib/sidebar-contents.js";
+import { layout } from "./layout";
 export default {
+  layout,
   PageLayout,
   SidebarTab,
   DetailsContainer,
@@ -17,5 +20,6 @@ export default {
   ModalAction,
   ModalAlert,
   ModalPicker,
-  Placeholder
+  Placeholder,
+  SidebarTypes
 };

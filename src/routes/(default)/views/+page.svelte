@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { layout } from "$lib/layout"
   /** Transitions */
   import { slide } from "svelte/transition";
 
@@ -10,7 +11,12 @@
   }
 </script>
 
-<div class="tablist-wrapper centered-page small">
+<header class="page-title">
+  <div class="centered-page small">
+  {#if $layout.mobile}
+    <button class="flat-button --small" on:click={() => $layout.sidebar = true}>back</button>
+  {/if}
+  <h1>{activeView}</h1>
   <div class="tablist light" role="tablist">
     <button
       role="tab"
@@ -38,7 +44,8 @@
       on:click={() => setView("view5")}>View 5</button
     >
   </div>
-</div>
+  </div>
+</header>
 <div class="centered-page small">
   {#if activeView === "view1"}
     <section class="container-wrapper">

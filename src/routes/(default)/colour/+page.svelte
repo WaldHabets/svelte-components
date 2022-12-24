@@ -1,5 +1,11 @@
+<script lang="ts">
+  import {layout} from "$lib/layout";
+</script>
 <main class="centered-page wide">
   <header class="page-title">
+    {#if $layout.mobile}
+      <button class="flat-button --small" on:click={() => $layout.sidebar = true}>back</button>
+    {/if}
     <h1>Colours</h1>
   </header>
   <header>

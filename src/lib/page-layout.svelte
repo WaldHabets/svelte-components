@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
   import { quintOut } from "svelte/easing";
+  import { layout } from "./layout";
 
   /** Components */
   import ListItemLink from "$lib/list-item-link.svelte";
@@ -8,63 +9,102 @@
   /** Exports */
   export let backNavigation: false | string = false;
   export let backNavigationLabel: string = "Back";
-  export let sidebar: any[] = [];
+  export let sidebar: SidebarContent | null = null;
 
   /** Icons */
   import { mdiArrowLeft, mdiMenu } from "@mdi/js";
   //import { SidebarGroup } from "./sidebar-contents";
   import { type Page } from "@sveltejs/kit";
   import { type Readable } from "svelte/store";
+  import type { SidebarContent } from "$lib/sidebar-contents";
   export let page: Readable<Page>;
 
   /** Locals */
   let sidebarState: "--expanded" | "--collapsed" = "--collapsed";
   let width;
+  $: $layout.mobile = width < 780;
   $: formfactor = width > 780 ? "--wide" : "--small";
   $: wide = formfactor === "--wide";
   $: expanded = sidebarState === "--expanded";
 
   function toggleSidebar(): void {
-    sidebarState = sidebarState === "--expanded" ? "--collapsed" : "--expanded";
+    $layout.sidebar = !$layout.sidebar;
   }
 
   function swipeHandler(event) {}
 </script>
 
-<div id="page" class={sidebarState + " " + formfactor} bind:clientWidth={width}>
-  <header id="page-header">
-    {#if !wide && !expanded && !backNavigation}
-      <button class="" id="nav-back-button" on:click={toggleSidebar}>
-        <svg viewBox="0 0 24 24">
-          <path d={mdiMenu} />
-        </svg>
-      </button>
-    {:else if backNavigation}
-      <a
-        class=""
-        id="nav-back-button"
-        href={backNavigation}
-        on:click={toggleSidebar}
+<div id="page" class="{$layout.mobile ? '--mobile' : '--desktop'}" bind:clientWidth={width}>
+  {#if $layout.mobile}
+    {#if sidebar && $layout.sidebar}
+      <main
+        class="grow sidebar"
+        transition:fly={{
+          x: -width,
+          y: 0,
+          duration: 600,
+          easing: quintOut,
+        }}>
+        <header class="page-title">
+          <div>
+            {#if sidebar.back}
+              <a href={sidebar.back.href} class="flat-button --compact --flex">
+                <svg viewBox="0 0 24 24">
+                  <path d={sidebar.back.icon} />
+                </svg>
+                <span>{sidebar.back.text}</span>
+              </a>
+            {/if}
+            <h1>{sidebar.title}</h1>
+          </div>
+        </header>
+        <nav>
+          {#each sidebar.items as sidebarGroup}
+            <ul class="sidebar-group">
+              {#each sidebarGroup.items as sidebarItem}
+                <li
+                  title={sidebarItem.text}
+                  class={$page.url.pathname === sidebarItem.href
+                  ? "active sidebar-item"
+                  : "sidebar-item"}
+                  on:click={toggleSidebar}
+                >
+                  <a href={sidebarItem.href}>
+                    <svg viewBox="0 0 24 24">
+                      <path d={sidebarItem.icon} />
+                    </svg>
+                    <span>
+                    {sidebarItem.text}
+                  </span>
+                  </a>
+                </li>
+              {/each}
+            </ul>
+          {/each}
+        </nav>
+      </main
       >
-        <svg viewBox="0 0 24 24">
-          <path d={mdiArrowLeft} />
-        </svg>
-      </a>
     {/if}
-  </header>
-  {#if wide}
-    <div
-      id="page-sidebar"
-      transition:fly={{
-        x: 100,
-        y: 0,
-        delay: 150,
-        duration: 500,
-        easing: quintOut,
-      }}
-    >
+    <main class="grow content">
+      <slot name="main" />
+    </main>
+  {:else}
+    <div class="sidebar">
       <nav>
-        {#each sidebar as sidebarGroup}
+        {#if sidebar}
+          {#if sidebar.back}
+            <div class="standalone-item">
+              <a href={sidebar.back.href}>
+                <svg viewBox="0 0 24 24">
+                  <path d={sidebar.back.icon} />
+                </svg>
+                <span>
+                    {sidebar.back.text}
+                  </span>
+              </a>
+            </div>
+          {/if}
+        {#each sidebar.items as sidebarGroup}
           <ul class="sidebar-group">
             {#each sidebarGroup.items as sidebarItem}
               <li
@@ -86,58 +126,13 @@
             {/each}
           </ul>
         {/each}
+        {/if}
       </nav>
-      <div>
-        <slot name="sidebar-actions" />
-      </div>
     </div>
-  {:else if expanded}
-    <div id="page-sidebar-container" on:click|self={toggleSidebar}>
-      <nav
-        id="page-sidebar"
-        transition:fly={{
-          x: -100,
-          y: 0,
-          delay: 150,
-          duration: 500,
-          easing: quintOut,
-        }}
-      >
-        {#each sidebar as sidebarGroup}
-          <section class="container-wrapper">
-            <ul class="list-box">
-              {#each sidebarGroup.items as sidebarItem}
-                <ListItemLink
-                  href={sidebarItem.href}
-                  iconStart={sidebarItem.icon}
-                  on:navigate={toggleSidebar}
-                >
-                  {sidebarItem.text}
-                </ListItemLink>
-              {/each}
-            </ul>
-          </section>
-        {/each}
-      </nav>
-      <div>
-        <slot name="sidebar-actions" />
-      </div>
-    </div>
+    <main class="content">
+      <slot name="main" />
+    </main>
   {/if}
-  <!--{#if (wide || !expanded)}-->
-  <main
-    id="page-main"
-    transition:fly={{
-      x: -100,
-      y: 0,
-      delay: 150,
-      duration: 500,
-      easing: quintOut,
-    }}
-  >
-    <slot name="main" />
-  </main>
-  <!--{/if}-->
 </div>
 
 <style lang="scss">
@@ -163,31 +158,49 @@
   $header-border: 2px;
   $content-height: calc(100vh - $header-height);
 
-  @mixin scroll-shadows {
-    $bg: #f8f8f8;
-    $bg-trans: rgba($bg, 0);
-    $shadow: rgba(black, 0.3);
+  @mixin sidebar-item($padding, $height, $icon-dim) {
+      box-sizing: border-box;
+      height: $height;
+      overflow: hidden;
+      margin: 0 $padding;
+      a {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        flex-wrap: nowrap;
+        font-weight: bold;
+        text-decoration: none;
+        color: inherit;
+        padding: $padding;
 
-    background:
-        /* Shadow Cover TOP */ linear-gradient(
-          $bg 12px,
-          $bg-trans
-        )
-        center top,
-      /* Shadow Cover BOTTOM */ linear-gradient($bg-trans, $bg 4px) center
-        bottom,
-      /* Shadow TOP */
-        radial-gradient(farthest-side at 50% 0, $shadow, rgba(0, 0, 0, 0))
-        center top,
-      /* Shadow BOTTOM */
-        radial-gradient(farthest-side at 50% 100%, $shadow, rgba(0, 0, 0, 0))
-        center bottom;
-
-    background-repeat: no-repeat;
-    background-size: 100% 40px, 100% 40px, 100% 8px, 100% 4px;
-    background-attachment: local, local, scroll, scroll;
-  }
-  @mixin menu() {
+        svg {
+          box-sizing: border-box;
+          vertical-align: middle;
+          flex-shrink: 0;
+          color: inherit;
+          height: $icon-dim;
+          width: $icon-dim;
+          padding: 4px;
+          margin: 0 4px;
+          path {
+            fill: currentColor;
+          }
+        }
+        span {
+          display: inline-block;
+          line-height: $icon-dim;
+          font-size: math.div($icon-dim, 2);
+          overflow: hidden;
+          color: inherit;
+        }
+      }
+      &:hover,
+      &.active {
+        cursor: pointer;
+        color: var(--pt-theme-on-soft);
+        background-color: var(--pt-theme-soft);
+        border-radius: 32px;
+      }
   }
   @mixin sidebar() {
     $padding: 8px;
@@ -201,51 +214,12 @@
       &:not(:first-child) {
         border-top: 1px solid var(--pt-border);
       }
-
       .sidebar-item {
-        box-sizing: border-box;
-        height: $height;
-        overflow: hidden;
-        margin: 0 $padding;
-        a {
-          display: flex;
-          align-items: center;
-          overflow: hidden;
-          flex-wrap: nowrap;
-          font-weight: bold;
-          text-decoration: none;
-          color: inherit;
-          padding: $padding;
-
-          svg {
-            box-sizing: border-box;
-            vertical-align: middle;
-            flex-shrink: 0;
-            color: inherit;
-            height: $icon-dim;
-            width: $icon-dim;
-            padding: 4px;
-            margin: 0 4px;
-            path {
-              fill: currentColor;
-            }
-          }
-          span {
-            display: inline-block;
-            line-height: $icon-dim;
-            font-size: math.div($icon-dim, 2);
-            overflow: hidden;
-            color: inherit;
-          }
-        }
-        &:hover,
-        &.active {
-          cursor: pointer;
-          color: var(--pt-theme-on-soft);
-          background-color: var(--pt-theme-soft);
-          border-radius: 32px;
-        }
+        @include sidebar-item($padding, $height, $icon-dim);
       }
+    }
+    .standalone-item {
+      @include sidebar-item($padding, $height, $icon-dim);
     }
   }
 
@@ -284,81 +258,108 @@
       padding: 8px 16px;
       margin: 0;
     }
-    #page-sidebar {
-      height: 100%;
-    }
-    #page-main {
-      overflow-y: scroll;
-      background-color: var(--pt-body-bg);
-    }
   }
 
   #page {
-    background-color: var(--pt-container-bg);
+    background-color: var(--pt-body-bg);
     box-shadow: var(--pt-shadow-container);
     display: grid;
     height: 100vh;
     //grid-template-rows: $header-height $content-height;
+    @include page-generic();
+    .sidebar {
+      background-color: var(--pt-body-bg);
+      height: 100%;
+      z-index: 100;
+      @include sidebar();
+    }
+    .content {
+      overflow-y: scroll;
+      background-color: var(--pt-body-bg);
+    }
 
-    &.--small {
-      grid-template-areas:
-        "header"
-        "content";
-      grid-template-columns: auto;
-      #page-header {
-        grid-area: header;
-        background-color: var(--pt-body-bg);
-      }
-      #page-sidebar-container {
-        width: 100vw;
-        background-color: rgba(black, 0.3);
+    &.--mobile {
+      .sidebar {
         position: absolute;
         height: 100vh;
+        width: 100vw;
       }
-      #page-sidebar {
-        //grid-area: content;
-        //border-top: 2px solid #bbb;
-        border: none;
-        position: absolute;
-        box-sizing: border-box;
-        background-color: var(--pt-body-bg);
-        max-width: calc(100% - 96px);
-        width: 100%;
-        height: 100%;
-        overflow-y: scroll;
-        box-shadow: 1px 0 4px -2px;
-        //padding: 16px;
-
-        @include menu();
-      }
-      #page-main {
-        grid-area: content;
-        //border-top: 2px solid #bbb;
-      }
-      @include page-generic();
     }
-
-    &.--wide {
+    &.--desktop {
       grid-template-areas: "sidebar main";
       grid-template-columns: $sidebar-w-expanded auto;
-      #page-header {
-        display: none;
-        //grid-area: header;
-        //background-color: transparent;
-      }
-      #page-sidebar {
+      .sidebar {
         grid-area: sidebar;
-        background-color: transparent;
-
+        background-color: var(--pt-container-bg);
+        border-right: 1px solid var(--pt-border);
+        box-shadow: var(--pt-shadow-container);
         @include sidebar();
       }
-      #page-main {
+      .content {
         grid-area: main;
-        //border-top-left-radius: 16px;
-        border-left: 2px solid var(--pt-border);
-        //border-top: 2px solid #bbb;
       }
-      @include page-generic();
     }
+
+
+    //&.--small {
+    //  grid-template-areas:
+    //    "header"
+    //    "content";
+    //  grid-template-columns: auto;
+    //  #page-header {
+    //    grid-area: header;
+    //    background-color: var(--pt-body-bg);
+    //  }
+    //  #page-sidebar-container {
+    //    width: 100vw;
+    //    background-color: rgba(black, 0.3);
+    //    position: absolute;
+    //    height: 100vh;
+    //  }
+    //  #page-sidebar {
+    //    //grid-area: content;
+    //    //border-top: 2px solid #bbb;
+    //    border: none;
+    //    position: absolute;
+    //    box-sizing: border-box;
+    //    background-color: var(--pt-body-bg);
+    //    max-width: calc(100% - 96px);
+    //    width: 100%;
+    //    height: 100%;
+    //    overflow-y: scroll;
+    //    box-shadow: 1px 0 4px -2px;
+    //    //padding: 16px;
+    //
+    //    @include menu();
+    //  }
+    //  #page-main {
+    //    grid-area: content;
+    //    //border-top: 2px solid #bbb;
+    //  }
+    //  @include page-generic();
+    //}
+
+    //&.--wide {
+    //  grid-template-areas: "sidebar main";
+    //  grid-template-columns: $sidebar-w-expanded auto;
+    //  #page-header {
+    //    display: none;
+    //    //grid-area: header;
+    //    //background-color: transparent;
+    //  }
+    //  #page-sidebar {
+    //    grid-area: sidebar;
+    //    background-color: transparent;
+    //
+    //    @include sidebar();
+    //  }
+    //  #page-main {
+    //    grid-area: main;
+    //    //border-top-left-radius: 16px;
+    //    border-left: 2px solid var(--pt-border);
+    //    //border-top: 2px solid #bbb;
+    //  }
+    //  @include page-generic();
+    //}
   }
 </style>

@@ -17,66 +17,67 @@
     mdiFormatListBulletedSquare,
     mdiGesture,
   } from "@mdi/js";
+  import type { SidebarContent } from "$lib/sidebar-contents";
 
-  let sidebarContents = [
-    {
-      name: "1",
-      items: [
-        {
-          icon: mdiHomeOutline,
-          href: "/",
-          text: "Home",
-        },
-      ],
-    },
-    {
-      name: "Style & Layout",
-      items: [
-        {
-          icon: mdiPageLayoutBody,
-          href: "/layout",
-          text: "Layout & Size",
-        },
-        {
-          icon: mdiEmoticonOutline,
-          href: "/iconography",
-          text: "Iconography",
-        },
-        {
-          icon: mdiPalette,
-          href: "/colour",
-          text: "Colour",
-        },
-      ],
-    },
-    {
-      name: "Interaction",
-      items: [
-        {
-          icon: mdiButtonCursor,
-          href: "/controls",
-          text: "Controls",
-        },
-        {
-          icon: mdiGesture,
-          href: "/gestures",
-          text: "Gestures",
-        },
-      ],
-    },
-    {
-      name: "3",
-      items: [{ icon: mdiMagnify, href: "/search", text: "Search" }],
-    },
-    {
-      name: "Structure",
-      items: [
-        { icon: mdiCardOutline, href: "/containers", text: "Containers" },
-        { icon: mdiFormatListBulletedSquare, href: "/list", text: "List" },
-        { icon: mdiViewCarouselOutline, href: "/views", text: "Views" },
-      ],
-    },
-  ];
+  let sidebarContents: SidebarContent = {
+    back: null,
+    title: "LibVitra",
+    items: [
+      {
+        name: "1",
+        items: [
+          {
+            icon: mdiHomeOutline,
+            href: "/",
+            text: "Home",
+          },
+        ],
+      }, {
+        name: "Style & Layout",
+        items: [
+          {
+            icon: mdiPageLayoutBody,
+            href: "/layout",
+            text: "Layout & Size",
+          },
+          {
+            icon: mdiEmoticonOutline,
+            href: "/iconography",
+            text: "Iconography",
+          },
+          {
+            icon: mdiPalette,
+            href: "/colour",
+            text: "Colour",
+          },
+        ],
+      }, {
+        name: "Interaction",
+        items: [
+          {
+            icon: mdiButtonCursor,
+            href: "/controls",
+            text: "Controls",
+          },
+          {
+            icon: mdiGesture,
+            href: "/gestures",
+            text: "Gestures",
+          },
+        ],
+      }, {
+        name: "3",
+        items: [{ icon: mdiMagnify, href: "/search", text: "Search" }],
+      }, {
+        name: "Structure",
+        items: [
+          { icon: mdiCardOutline, href: "/containers", text: "Containers" },
+          { icon: mdiFormatListBulletedSquare, href: "/list", text: "List" },
+          { icon: mdiViewCarouselOutline, href: "/views", text: "Views" },
+        ],
+      },
+    ]
+  };
 </script>
 
 <PageLayout sidebar={sidebarContents} {page}>

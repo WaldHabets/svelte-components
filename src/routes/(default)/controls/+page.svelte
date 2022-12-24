@@ -1,4 +1,5 @@
 <script lang="ts">
+  import {layout} from "$lib/layout";
   /** Components */
   import Breadcrumbs from "$lib/breadcrumbs.svelte";
 
@@ -6,11 +7,16 @@
   import { mdiDotsVertical } from "@mdi/js";
 </script>
 
+<header class="page-title">
+  <div class="centered-page small">
+  {#if $layout.mobile}
+    <button class="flat-button --small" on:click={() => $layout.sidebar = true}>back</button>
+  {/if}
+  <h1>Controls</h1>
+  <p>Various control elements.</p>
+  </div>
+</header>
 <div class="centered-page small">
-  <header class="page-title">
-    <h1>Controls</h1>
-    <p>Various control elements.</p>
-  </header>
   <section class="container-wrapper">
     <header class="container-header">
       <h1>Buttons</h1>

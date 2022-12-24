@@ -1,4 +1,5 @@
 <script lang="ts">
+  import {layout} from "$lib/layout";
   import type Modal from "$lib/modal";
   import ModalAction from "../../../lib/modal-action.svelte";
   import ModalAlert from "../../../lib/modal-alert.svelte";
@@ -25,6 +26,9 @@
 
 <div class="centered-page small">
   <header class="page-title">
+    {#if $layout.mobile}
+      <button class="flat-button --small" on:click={() => $layout.sidebar = true}>back</button>
+    {/if}
     <h1>Containers</h1>
     <p>Containers are components that logically group other content.</p>
   </header>

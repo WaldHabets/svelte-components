@@ -1,5 +1,12 @@
+<script lang="ts">
+  import { layout } from "$lib/layout"
+</script>
+
 <div class="center-page --small">
   <header class="page-title">
+    {#if $layout.mobile}
+      <button class="flat-button --small" on:click={() => $layout.sidebar = true}>back</button>
+    {/if}
     <h1>Layout & Size</h1>
   </header>
   <section class="container-wrapper">

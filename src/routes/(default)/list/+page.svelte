@@ -1,4 +1,5 @@
 <script lang="ts">
+  import {layout} from "$lib/layout";
   /** Components */
   import ListItemActive from "../../../lib/list-item-active.svelte";
   import ModalAction from "../../../lib/modal-action.svelte";
@@ -25,6 +26,9 @@
 
 <div class="centered-page small">
   <header class="page-title">
+    {#if $layout.mobile}
+      <button class="flat-button --small" on:click={() => $layout.sidebar = true}>back</button>
+    {/if}
     <h1>Lists</h1>
   </header>
   <section class="container-wrapper">
