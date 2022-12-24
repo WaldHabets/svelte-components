@@ -81,12 +81,6 @@
 </script>
 
 <PageLayout sidebar={sidebarContents} {page}>
-  <!--    <svelte:fragment slot="sidebar-nav">-->
-  <!--        <SidebarGroup>-->
-  <!--            <SidebarTab icon={mdiHome} href="/nested" title="Nested pages" />-->
-  <!--            <SidebarTab icon="{mdiHome}" href="/context" title="Context changes" />-->
-  <!--        </SidebarGroup>-->
-  <!--    </svelte:fragment>-->
   <slot slot="main" />
 </PageLayout>
 
