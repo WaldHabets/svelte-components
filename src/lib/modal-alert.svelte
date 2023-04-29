@@ -1,13 +1,13 @@
 <script lang="ts">
-  import type Modal from "./modal";
+  import type Modal from "$lib/modal";
   /** Transitions */
   import { slide } from "svelte/transition";
   /** Icons */
   import { mdiClose } from "@mdi/js";
   /** Properties */
   export let title: string = "";
-  export let showModal: boolean = false;
-  export let param: object = null;
+  let isShowing: boolean = false;
+  export let param: object | null = null;
 
   export let cancelAction: false | string = false;
   export let negativeAction: false | string = false;
@@ -16,15 +16,20 @@
 
   export const modal: Modal = {
     show(): void {
-      showModal = true;
+      isShowing = true;
     },
     showWithData(data: object): void {
-      showModal = true;
-      param = data;
+      isShowing = true;
     },
-    hide(): void {
-      showModal = false;
+      hide(): void {
+      isShowing = false;
     },
+      onKeyEvent(e) {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          onCancelAction();
+        }
+    }
   };
 
   /** events */
@@ -46,8 +51,12 @@
   }
 </script>
 
-{#if showModal}
-  <div class="option-sheet-backdrop" on:click|self={onCancelAction} on:keyup>
+<svelte:window on:keydown={modal.onKeyEvent} />
+{#if isShowing}
+  <div aria-modal="true" role="dialog"
+       class="option-sheet-backdrop"
+       on:click|self={onCancelAction}
+       on:keyup>
     <div class="option-sheet" transition:slide>
       <header class="option-sheet-header">
         <h1>{title}</h1>

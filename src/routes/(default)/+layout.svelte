@@ -15,16 +15,15 @@
     mdiPalette,
     mdiHomeOutline,
     mdiFormatListBulletedSquare,
-    mdiGesture,
+    mdiGesture, mdiSlashForward, mdiCheckboxMarked, mdiRadioboxMarked, mdiFormTextbox, mdiTableRow
   } from "@mdi/js";
   import type { SidebarContent } from "$lib/sidebar-contents";
 
   let sidebarContents: SidebarContent = {
-    back: null,
     title: "LibVitra",
     items: [
       {
-        name: "1",
+        name: null,
         items: [
           {
             icon: mdiHomeOutline,
@@ -33,49 +32,43 @@
           },
         ],
       }, {
-        name: "Style & Layout",
+        name: "Style",
         items: [
-          {
-            icon: mdiPageLayoutBody,
-            href: "/layout",
-            text: "Layout & Size",
-          },
-          {
-            icon: mdiEmoticonOutline,
-            href: "/iconography",
-            text: "Iconography",
-          },
-          {
-            icon: mdiPalette,
-            href: "/colour",
-            text: "Colour",
-          },
+          {icon: mdiPageLayoutBody,href: "/layout",text: "Layout & Size",},
+          {icon: mdiEmoticonOutline,href: "/iconography",text: "Iconography",},
+          {icon: mdiPalette,href: "/colour",text: "Colour",},
         ],
       }, {
-        name: "Interaction",
+        name: "Input",
         items: [
-          {
-            icon: mdiButtonCursor,
-            href: "/controls",
-            text: "Controls",
-          },
-          {
-            icon: mdiGesture,
-            href: "/gestures",
-            text: "Gestures",
-          },
+          {icon: mdiButtonCursor, href: "/buttons",text: "Buttons",},
+          {icon: mdiRadioboxMarked, href: "/radioboxes",text: "Radioboxes",},
+          {icon: mdiCheckboxMarked, href: "/checkboxes",text: "Checkboxes",},
+          {icon: mdiButtonCursor, href: "/controls",text: "Input fields",},
+          {icon: mdiFormTextbox,href: "/gestures",text: "Gestures",},
         ],
       }, {
-        name: "3",
-        items: [{ icon: mdiMagnify, href: "/search", text: "Search" }],
+        name: "Patterns",
+        items: [
+          {icon: mdiPalette,href: "/", text: "Header bar"},
+          {icon: mdiPalette,href: "/", text: "Menu bar"},
+          { icon: mdiCardOutline, href: "/banners", text: "Banners" },
+        ],
       }, {
-        name: "Structure",
+        name: "Containers",
         items: [
           { icon: mdiCardOutline, href: "/containers", text: "Containers" },
-          { icon: mdiFormatListBulletedSquare, href: "/list", text: "List" },
-          { icon: mdiViewCarouselOutline, href: "/views", text: "Views" },
+          { icon: mdiFormatListBulletedSquare, href: "/list-box", text: "List Boxes" },
+          { icon: mdiFormatListBulletedSquare, href: "/#", text: "Vertical & Grid Lists" },
         ],
-      },
+      }, {
+        name: "Navigation",
+        items: [
+          { icon: mdiViewCarouselOutline, href: "/", text: "Sidebar" },
+          { icon: mdiTableRow, href: "/views", text: "Tabs" },
+          { icon: mdiSlashForward, href: "/breadcrumbs", text: "Breadcrumbs"}
+        ]
+      }
     ]
   };
 </script>

@@ -73,6 +73,10 @@
         overflow: hidden;
         color: inherit;
       }
+
+      &:focus-visible {
+        outline: 3px solid var(--pt-theme-primary);
+      }
     }
 
     &:hover,

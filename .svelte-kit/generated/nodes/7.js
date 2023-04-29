@@ -1,1 +1,1 @@
-export { default as component } from "../../../src/routes/(default)/colour/+page.svelte";
+export { default as component } from "../../../src/routes/(default)/(interaction)/buttons/+page.svelte";

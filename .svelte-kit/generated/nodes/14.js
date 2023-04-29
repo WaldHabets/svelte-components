@@ -1,1 +1,1 @@
-export { default as component } from "../../../src/routes/(nested)/nested/+page.svelte";
+export { default as component } from "../../../src/routes/(default)/containers/+page.svelte";

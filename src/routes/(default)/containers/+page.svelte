@@ -4,6 +4,10 @@
   import ModalAction from "../../../lib/modal-action.svelte";
   import ModalAlert from "../../../lib/modal-alert.svelte";
   import DetailsContainer from "$lib/details-container.svelte";
+  import HeaderBar from "$lib/header-bar.svelte";
+  import MenuBar from "$lib/menu-bar.svelte";
+  import SidebarButton from "$lib/sidebar-button.svelte";
+  import SimpleContainerHeader from "$lib/simple-container-header.svelte";
 
   let modalAlert: Modal;
   let modalDeleteAlert: Modal;
@@ -24,25 +28,26 @@
   } from "@mdi/js";
 </script>
 
+{#if $layout.mobile}
+  <HeaderBar
+    title="Containers"
+    blurb="Containers are components that logically group other content." width="small"/>
+  <MenuBar width="small">
+    <SidebarButton label="Menu" cClass="--medium"/>
+  </MenuBar>
+{:else}
+  <HeaderBar
+    title="Containers"
+    blurb="Containers are components that logically group other content." width="small" standalone/>
+{/if}
 <div class="centered-page small">
-  <header class="page-title">
-    {#if $layout.mobile}
-      <button class="flat-button --small" on:click={() => $layout.sidebar = true}>back</button>
-    {/if}
-    <h1>Containers</h1>
-    <p>Containers are components that logically group other content.</p>
-  </header>
   <section class="container-wrapper">
-    <header class="container-header">
-      <h1>Containers</h1>
-      <p>
-        Above you see the title of a container. You can inlcude some small
-        paragraphs to explain the content of such containers. The actual
-        container is below
-      </p>
-    </header>
+    <SimpleContainerHeader
+      title="Containers"
+      blurb="Above you see the title of a container. You can inlcude some small paragraphs to explain the content of such containers. The actual container is below"
+    />
     <div class="container">
-      <h2>This a container...</h2>
+      <h3>This a container...</h3>
       <p>
         This is a container, you can put whatever you like in here, as long as
         its content is logically coherent.
@@ -50,20 +55,15 @@
     </div>
   </section>
   <section class="container-wrapper">
-    <header class="container-header">
-      <h1>Container Toolbars</h1>
-      <p>
-        Containers might have toolbars that can affect the content in the
-        container.
-      </p>
-    </header>
+    <SimpleContainerHeader
+      title="Container Toolbars"
+      blurb="Containers might have toolbars that can affect the content in the
+        container."
+      />
     <div class="container" />
   </section>
   <section class="container-wrapper">
-    <header class="container-header">
-      <h1>Alert Modal</h1>
-      <p>This is a alert modal</p>
-    </header>
+    <SimpleContainerHeader title="Alert Modal" blurb="This is a alert modal" />
     <div class="container">
       <button class="button" on:click={modalAlert.show}>
         Open alert modal
@@ -82,10 +82,7 @@
     </div>
   </section>
   <section class="container-wrapper">
-    <header class="container-header">
-      <h1>Action Modal</h1>
-      <p>This is a action modal</p>
-    </header>
+    <SimpleContainerHeader title="Action Modal" blurb="This is a action modal" />
     <div class="container">
       <button class="button" on:click={modalAction.show}>
         Open action modal
@@ -148,9 +145,7 @@
     </div>
   </section>
   <section class="container-wrapper">
-    <header class="container-header">
-      <h1>Details</h1>
-    </header>
+    <SimpleContainerHeader title="Details" />
     <DetailsContainer labelExpand="Expand" labelCollapse="Collapse">
       <svelte:fragment slot="summary">
         This is a details container

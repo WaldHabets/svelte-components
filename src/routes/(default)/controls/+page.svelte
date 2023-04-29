@@ -2,20 +2,26 @@
   import {layout} from "$lib/layout";
   /** Components */
   import Breadcrumbs from "$lib/breadcrumbs.svelte";
+  import HeaderBar from "$lib/header-bar.svelte";
+  import MenuBar from "$lib/menu-bar.svelte";
+  import SidebarButton from "$lib/sidebar-button.svelte";
 
   /** Icons */
   import { mdiDotsVertical } from "@mdi/js";
 </script>
 
-<header class="page-title">
-  <div class="centered-page small">
-  {#if $layout.mobile}
-    <button class="flat-button --small" on:click={() => $layout.sidebar = true}>back</button>
-  {/if}
-  <h1>Controls</h1>
-  <p>Various control elements.</p>
-  </div>
-</header>
+<svelte:head>
+  <title>Controls</title>
+</svelte:head>
+
+{#if $layout.mobile}
+  <HeaderBar title="Controls" blurb="Various control elements" width="small"/>
+  <MenuBar width="small">
+    <SidebarButton label="Menu" cClass="--medium"/>
+  </MenuBar>
+{:else}
+  <HeaderBar title="Controls" blurb="Various control elements" width="small" standalone/>
+{/if}
 <div class="centered-page small">
   <section class="container-wrapper">
     <header class="container-header">
@@ -39,10 +45,6 @@
           </p>
         </div>
         <button class="button --themed --medium">Button</button>
-      </div>
-      <div class="control-example">
-        <p>Warn button</p>
-        <button class="button --warn --medium">Button</button>
       </div>
       <div class="control-example">
         <div>
@@ -194,82 +196,6 @@
           <span class="radio-info">This is information about option 4</span>
         </span>
       </label>
-    </div>
-  </section>
-  <section class="container-wrapper">
-    <header class="container-header">
-      <h1>Radiobuttons</h1>
-    </header>
-    <div class="container">
-      <label for="radio1" class="radio-group">
-        <input type="radio" id="radio1" name="radio-group" value="HTML" />
-        <span class="radio-label">Option 1</span>
-      </label>
-      <label for="radio2" class="radio-group">
-        <input type="radio" id="radio2" name="radio-group" value="HTML" />
-        <span class="radio-label">Option 2</span>
-      </label>
-      <label for="radio3" class="radio-group">
-        <input type="radio" id="radio3" name="radio-group" value="HTML" />
-        <span class="radio-label">
-          <span class="radio-title">Option 3</span>
-          <span class="radio-info">You can provide extra information</span>
-        </span>
-      </label>
-      <label for="radio4" class="radio-group">
-        <input type="radio" id="radio4" name="radio-group" value="HTML" />
-        <span class="radio-label">
-          <span class="radio-title">Option 4</span>
-          <span class="radio-info">This is information about option 4</span>
-        </span>
-      </label>
-    </div>
-  </section>
-  <section class="container-wrapper">
-    <header class="container-header">
-      <h1>Radiobuttons</h1>
-    </header>
-    <div class="container">
-      <div class="switch-example">
-        <p>Enabled</p>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider round" />
-        </label>
-      </div>
-      <div class="switch-example">
-        <p>Disabled, toggle off</p>
-        <label class="switch">
-          <input type="checkbox" disabled />
-          <span class="slider round" />
-        </label>
-      </div>
-      <div class="switch-example">
-        <p>Disabled, toggle on</p>
-        <label class="switch">
-          <input type="checkbox" disabled checked />
-          <span class="slider round" />
-        </label>
-      </div>
-    </div>
-  </section>
-  <section class="container-wrapper">
-    <header class="container-header">
-      <h1>Breadcrumbs</h1>
-    </header>
-    <div class="container">
-      <Breadcrumbs
-        breadcrumbs={[
-          {
-            label: "home",
-            href: "#",
-          },
-          {
-            label: "Controls",
-            href: "/controls",
-          },
-        ]}
-      />
     </div>
   </section>
 </div>

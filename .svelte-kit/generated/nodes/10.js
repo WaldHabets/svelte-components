@@ -1,1 +1,1 @@
-export { default as component } from "../../../src/routes/(default)/layout/+page.svelte";
+export { default as component } from "../../../src/routes/(default)/(interaction)/radioboxes/+page.svelte";

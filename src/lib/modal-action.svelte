@@ -1,31 +1,38 @@
 <script lang="ts">
-  import type Modal from "./modal"
+  import type Modal from "$lib/modal";
   /** Transitions */
   import { slide } from 'svelte/transition';
   /** Icons */
   import {mdiClose} from "@mdi/js";
   /** Properties */
   export let title: string = "";
-  export let showSheet: boolean = false;
+  let isShowing = false;
 
-  $: console.log(`updated to ${showSheet}`);
-
-  export const sheet: Modal =
-  {
+  export const sheet: Modal = {
     show(): void {
-      showSheet = true;
+      isShowing = true;
     },
-    showWithData(data: object) {
-      showSheet = true;
+    showWithData(data: object): void {
+      isShowing = true;
     },
     hide(): void {
-      showSheet = false;
+      isShowing = false;
+    },
+    onKeyEvent(e) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        sheet.hide();
+      }
     }
-  }
+  };
 </script>
 
-{#if showSheet}
-<div class="option-sheet-backdrop"  on:click|self={sheet.hide} on:keyup>
+<svelte:window on:keydown={sheet.onKeyEvent} />
+{#if isShowing}
+<div aria-modal="true" role="dialog"
+     class="option-sheet-backdrop"
+     on:click|self={sheet.hide}
+     on:keyup>
   <div class="option-sheet centered-page small container dark" transition:slide>
     <header class="option-sheet-header">
       <h1>{title}</h1>
