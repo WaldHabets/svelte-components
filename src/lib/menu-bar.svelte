@@ -1,6 +1,3 @@
-<script context="module" lang="ts">
-  export let prerender = true;
-</script>
 <script lang="ts">
   export let width: "small" | "wide" = "wide";
 </script>
