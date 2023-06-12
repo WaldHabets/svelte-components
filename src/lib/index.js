@@ -1,5 +1,7 @@
 // Reexport your entry components here
 import Breadcrumbs from "./breadcrumbs.svelte";
+import Checkbox from "./checkbox.svelte";
+import CheckboxGroup from "./checkbox-group.svelte";
 import DetailsContainer from "./details-container.svelte";
 import HeaderBar from "./header-bar.svelte";
 import ListItemActive from "./list-item-active.svelte";
@@ -15,9 +17,11 @@ import SimpleContainerHeader from "./simple-container-header.svelte";
 import Tablist from "./tablist.svelte";
 import { layout } from "./layout";
 
-export default {
+export {
   layout,
   Breadcrumbs,
+  Checkbox,
+  CheckboxGroup,
   PageLayout,
   DetailsContainer,
   ListItemActive,

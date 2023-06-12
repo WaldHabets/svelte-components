@@ -1,5 +1,5 @@
 {
-  "name": "svelte-components",
+  "name": "pipet-svelte",
   "version": "0.0.1",
   "scripts": {
     "dev": "vite dev",
@@ -29,14 +29,11 @@
     "typescript": "^4.7.4",
     "vite": "^4.0.0"
   },
-  "type": "module",
-
   "exports": {
     ".": {
       "types": "./index.d.ts",
       "svelte": "./index.js"
     }
   },
-  "svelte": "./index.js"
-
+  "type": "module"
 }
