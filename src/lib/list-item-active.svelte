@@ -37,10 +37,6 @@
     align-items: center;
     justify-content: space-between;
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
     .label-group {
       display: flex;
       align-items: center;

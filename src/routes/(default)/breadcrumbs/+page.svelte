@@ -28,14 +28,12 @@
 </svelte:head>
 
 <HeaderBar title="Breadcrumbs" width="small" />
-<MenuBar width="small">
-  <div style="display: flex; gap: 8px;">
-    {#if $layout.mobile}
-      <SidebarButton label="Menu" cClass="--medium"/>
-    {/if}
-    <Tablist {tabs} bind:active={active} cClass="--medium" cStyle="flex-grow: 1;" />
-  </div>
-</MenuBar>
+{#if $layout.mobile}
+  <MenuBar width="small">
+    <SidebarButton label="Menu" cClass="--medium"/>
+  </MenuBar>
+{/if}
+<Tablist {tabs} bind:active={active} cClass="--medium" cStyle="flex-grow: 1;" />
 <div class="centered-page small">
   {#if active.key === "view1"}
     <section>

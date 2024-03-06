@@ -5,20 +5,21 @@
   import SidebarButton from "$lib/sidebar-button.svelte";
   import Tablist from "$lib/tablist.svelte";
   import type Tab from "$lib/tablist.svelte";
+  import { mdiCodeBraces, mdiFileDocument, mdiPlay } from "@mdi/js";
 
   let tabs: Tab[] = [
-    {name: "Description", key: "view1"},
-    {name: "Demo",        key: "view2"},
-    {name: "API",         key: "view3"}
+    {name: "Description", key: "view1", icon: mdiFileDocument},
+    {name: "Demo",        key: "view2", icon: mdiPlay},
+    {name: "API",         key: "view3", icon: mdiCodeBraces}
   ]
   let active: Tab = tabs[0];
 
   let example: Tab[] = [
-    {name: "First", key: "view1"},
-    {name: "Second",        key: "view2"},
-    {name: "Third",         key: "view3"},
-    {name: "Fourth",         key: "view4"},
-    {name: "Fifth",         key: "view5"}
+    {name: "First",   key: "view1"},
+    {name: "Second",  key: "view2"},
+    {name: "Third",   key: "view3"},
+    {name: "Fourth",  key: "view4"},
+    {name: "Fifth",   key: "view5"}
   ]
 </script>
 
@@ -27,14 +28,12 @@
 </svelte:head>
 
 <HeaderBar title="Tablist" width="small" />
-<MenuBar width="small">
-  <div style="display: flex; gap: 8px;">
-    {#if $layout.mobile}
+{#if $layout.mobile}
+  <MenuBar width="small">
       <SidebarButton label="Menu" cClass="--medium"/>
-    {/if}
-    <Tablist {tabs} bind:active={active} cClass="--medium" cStyle="flex-grow: 1;" />
-  </div>
-</MenuBar>
+  </MenuBar>
+{/if}
+<Tablist {tabs} bind:active={active} cClass="--medium" cStyle="flex-grow: 1;" />
 <div class="centered-page small padded">
   {#if active.key === "view1"}
     <section>

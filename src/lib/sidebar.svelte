@@ -63,7 +63,10 @@
     box-sizing: border-box;
     height: $height;
     overflow: hidden;
-    margin: 0 $padding;
+    margin: 0;
+    &:not(:first-child) {
+      margin-top: 8px;
+    }
     a {
       display: flex;
       align-items: center;
@@ -99,17 +102,17 @@
       }
       &:hover,
       &:focus-visible{
-        color: var(--pt-theme-on-soft);
-        background-color: var(--pt-theme-soft);
-        border-radius: 32px;
+        color: var(--pt-text);
+        background-color: var(--pt-flat-control-bg);
+        border-radius: 8px;
       }
     }
     &.active {
       cursor: pointer;
       a {
-        color: var(--pt-theme-on-primary);
-        background-color: var(--pt-theme-primary);
-        border-radius: 32px;
+        color: var(--pt-text);
+        background-color: var(--pt-flat-control-bg);
+        border-radius: 8px;
       }
     }
   }
@@ -119,11 +122,12 @@
     $height: 48px;
     $icon-dim: $height - 2 * $padding;
 
-    background-color: var(--pt-container-bg);
+    background-color: var(--pt-container-bg-highlight);
     border-right: 1px solid var(--pt-border);
-    box-shadow: var(--pt-shadow-container);
     height: 100vh;
     z-index: 100;
+    box-sizing: border-box;
+    padding: 8px;
 
     overflow-y: scroll;
 
@@ -141,7 +145,7 @@
     .sidebar-group-title {
       font-size: 1.125rem;
       font-weight: bold;
-      color: var(--pt-theme-primary-standalone);
+      color: var(--pt-text);
       margin-top: 16px;
       margin-bottom: 4px;
       margin-inline: 16px;

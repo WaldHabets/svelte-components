@@ -30,7 +30,7 @@
     <div class="container">
       <div class="control-example">
         <p>Default button</p>
-        <button class="button --medium">Button</button>
+        <button class="button">Button</button>
       </div>
       <div class="control-example">
         <div>
@@ -44,7 +44,7 @@
             <code>--medium</code>
           </p>
         </div>
-        <button class="button --themed --medium">Button</button>
+        <button class="button-warning">Button</button>
       </div>
       <div class="control-example">
         <div>
@@ -58,36 +58,35 @@
             <code>medium</code>
           </p>
         </div>
-        <button class="button --alert --medium">Button</button>
+        <button class="button-info">Button</button>
       </div>
       <div class="control-example">
-        <p>Default button (disabled)</p>
-        <button class="button --medium" disabled>Button</button>
+        <div>
+          <h2>Alert button</h2>
+          <p>
+            Alert buttons should be used to indicate a damaging or unreversable
+            action.
+          </p>
+          <p>
+            Classes: <code>button</code>, <code>alert</code>,
+            <code>medium</code>
+          </p>
+        </div>
+        <button class="button-critical">Button</button>
       </div>
       <div class="control-example">
-        <p>Flat button</p>
-        <button class="flat-button --medium">Button</button>
-      </div>
-      <div class="control-example">
-        <p>Flat icon button</p>
-        <button class="flat-button --medium --icon --square">
-          <svg viewBox="0 0 24 24">
-            <path d={mdiDotsVertical} />
-          </svg>
-        </button>
-      </div>
-      <div class="control-example">
-        <p>Flat icon button with text</p>
-        <button class="flat-button flex default-size --medium --icon">
-          <label>Button</label>
-          <svg viewBox="0 0 24 24">
-            <path d={mdiDotsVertical} />
-          </svg>
-        </button>
-      </div>
-      <div class="control-example">
-        <p>Flat button (disabled)</p>
-        <button class="flat-button" disabled>Button</button>
+        <div>
+          <h2>Alert button</h2>
+          <p>
+            Alert buttons should be used to indicate a damaging or unreversable
+            action.
+          </p>
+          <p>
+            Classes: <code>button</code>, <code>alert</code>,
+            <code>medium</code>
+          </p>
+        </div>
+        <button class="button-good">Button</button>
       </div>
     </div>
   </section>
@@ -120,7 +119,7 @@
       <div>
         <label class="input-label" for="input">Text Input</label>
         <input
-          class="text-input --medium"
+          class="text-input"
           id="input"
           placeholder="Text input"
         />
@@ -128,7 +127,7 @@
       <div>
         <label class="input-label" for="input-d">Disabled Input</label>
         <input
-          class="text-input --medium"
+          class="text-input"
           id="input-d"
           placeholder="Text input (disabled)"
           disabled
@@ -137,7 +136,7 @@
       <div>
         <label class="input-label" for="input-r">Required Text Input</label>
         <input
-          class="text-input-v medium"
+          class="text-input-validate"
           id="input-r"
           placeholder="Text input (required)"
           required
@@ -148,7 +147,7 @@
           >Validated Text Input (email)</label
         >
         <input
-          class="text-input-v --medium"
+          class="text-input-validate"
           id="input-v"
           type="email"
           placeholder="Text input (invalid)"
@@ -158,11 +157,11 @@
         <label class="input-label" for="input-search">Input with button</label>
         <form class="search-bar">
           <input
-            class="text-input --connect-end --medium"
+            class="text-input --connect-end"
             id="input-search"
             placeholder="Search"
           /><!--
-        --><button class="button --connect-start --medium">
+        --><button class="button --connect-start">
             Search
           </button>
         </form>

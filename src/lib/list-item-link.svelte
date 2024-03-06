@@ -13,18 +13,15 @@
   /** Exports */
   export let outgoing: true | false = false;
   export let iconStart: false | string = false;
+  export let iconAriaLabel: string = "";
   export let href: false | string = false;
-
-  function clickHandler() {
-    dispatch("navigate");
-  }
 </script>
 
-<li class="list-item active" on:click={clickHandler} on:keyup>
+<li class="list-item active">
   <a {href}>
     {#if iconStart}
       <div class="label-group">
-        <svg viewBox="0 0 24 24" class="icon-start">
+        <svg viewBox="0 0 24 24" class="icon-start" aria-label="{iconAriaLabel}" >
           <path d={iconStart} />
         </svg>
         <p>
@@ -36,7 +33,7 @@
         <slot />
       </p>
     {/if}
-    <svg viewBox="0 0 24 24" class="icon-end">
+    <svg viewBox="0 0 24 24" class="icon-end" aria-hidden="true">
       <path d={outgoing ? mdiOpenInNew : mdiArrowRight} />
     </svg>
   </a>

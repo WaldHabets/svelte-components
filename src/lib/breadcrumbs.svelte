@@ -12,22 +12,23 @@
   export let cClass: string | null = null;
   /** Attributes */
   export let crumbs: Crumb[];
+  export let ariaLabel: string = "breadcrumb navigation"
 
   const head: Crumb[] = crumbs.slice(0, crumbs.length - 1);
   const tail: Crumb = crumbs[crumbs.length - 1];
 </script>
 
-<div
-  role="menuitem"
+<nav
   class="breadcrumbs {cClass}"
-  style={cStyle}>
+  style={cStyle}
+  aria-label="{ariaLabel}">
   {#each head as crumb}
     <a href="{crumb.href}">
       {crumb.name}
     </a>
-    <svg viewBox="0 0 24 24">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="{mdiChevronRight}" />
     </svg>
   {/each}
   <span class="selected">{tail.name}</span>
-</div>
+</nav>
