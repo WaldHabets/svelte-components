@@ -3,6 +3,8 @@
   import genID from "$lib/id";
   const id: string = `dialog-${genID()}`;
 
+  export let title: string | null = null;
+
   let dialog: HTMLDialogElement;
 
   export function show() {
@@ -16,9 +18,11 @@
 
 <dialog {id} bind:this={dialog} on:click|self={hide} class="modal">
   <div class="modal-box">
-    <header>
-      <h1>Modal title</h1>
-    </header>
+    {#if title}
+      <header>
+        <h1>{title}</h1>
+      </header>
+    {/if}
     <section>
       <slot name="content"></slot>
     </section>
@@ -26,7 +30,6 @@
       <slot name="buttons"></slot>
     </footer>
   </div>
-
 </dialog>
 
 <style lang="scss">
