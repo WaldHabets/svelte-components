@@ -24,14 +24,10 @@
         <svg viewBox="0 0 24 24" class="icon-start" aria-label="{iconAriaLabel}" >
           <path d={iconStart} />
         </svg>
-        <p>
-          <slot />
-        </p>
+        <slot />
       </div>
     {:else}
-      <p>
-        <slot />
-      </p>
+      <slot />
     {/if}
     <svg viewBox="0 0 24 24" class="icon-end" aria-hidden="true">
       <path d={outgoing ? mdiOpenInNew : mdiArrowRight} />
