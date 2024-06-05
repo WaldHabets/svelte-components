@@ -20,7 +20,7 @@
   {#if detached}
     <div class="detached-header">
       <p>{content.title}</p>
-      <button class="button --flex --medium" on:click={hide}>
+      <button class="button --flex --medium" on:click={hide} on:keyup>
         <svg viewBox="0 0 24 24">
           <path d="{mdiClose}"/>
         </svg>
@@ -40,6 +40,7 @@
                   ? "active sidebar-item"
                   : "sidebar-item"}
           on:click={hide}
+          on:keyup
         >
           <a href={sidebarItem.href}>
             <svg viewBox="0 0 24 24">
