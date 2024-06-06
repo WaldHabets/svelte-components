@@ -16,7 +16,7 @@
 </script>
 
 
-<dialog {id} bind:this={dialog} on:click|self={hide} class="modal">
+<dialog {id} bind:this={dialog} on:click|self={hide} on:keyup class="modal">
   <div class="modal-box">
     {#if title}
       <header>
