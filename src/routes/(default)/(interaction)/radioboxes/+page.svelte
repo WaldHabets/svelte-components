@@ -5,7 +5,7 @@
   import Demo from "./demo.svelte";
   import Api from "./api.svelte";
 
-  const title: string = "Buttons";
+  const title: string = "Radioboxes";
 
   const pages: TabPages = {
     view1: Description,

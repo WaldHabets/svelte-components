@@ -43,9 +43,10 @@
     {#if $layout.mobile}
       <SidebarButton label="Menu" cClass="--medium"/>
     {/if}
-    <Tablist {tabs} bind:active={active} cClass="--medium" cStyle="flex-grow: 1;" />
+
   </div>
 </MenuBar>
+<Tablist {tabs} bind:active={active} cClass="--medium" cStyle="flex-grow: 1;" />
 <div class="centered-page small">
   {#if active.key === "view1"}
     <section>

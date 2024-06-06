@@ -23,73 +23,7 @@
   <HeaderBar title="Controls" blurb="Various control elements" width="small" standalone/>
 {/if}
 <div class="centered-page small">
-  <section class="container-wrapper">
-    <header class="container-header">
-      <h1>Buttons</h1>
-    </header>
-    <div class="container">
-      <div class="control-example">
-        <p>Default button</p>
-        <button class="button">Button</button>
-      </div>
-      <div class="control-example">
-        <div>
-          <h2>Themed button</h2>
-          <p>
-            Use these buttons to highlight the most important actions, or to
-            highlight a positive action.
-          </p>
-          <p>
-            Classes: <code>button</code>, <code>--themed</code>,
-            <code>--medium</code>
-          </p>
-        </div>
-        <button class="button-warning">Button</button>
-      </div>
-      <div class="control-example">
-        <div>
-          <h2>Alert button</h2>
-          <p>
-            Alert buttons should be used to indicate a damaging or unreversable
-            action.
-          </p>
-          <p>
-            Classes: <code>button</code>, <code>alert</code>,
-            <code>medium</code>
-          </p>
-        </div>
-        <button class="button-info">Button</button>
-      </div>
-      <div class="control-example">
-        <div>
-          <h2>Alert button</h2>
-          <p>
-            Alert buttons should be used to indicate a damaging or unreversable
-            action.
-          </p>
-          <p>
-            Classes: <code>button</code>, <code>alert</code>,
-            <code>medium</code>
-          </p>
-        </div>
-        <button class="button-critical">Button</button>
-      </div>
-      <div class="control-example">
-        <div>
-          <h2>Alert button</h2>
-          <p>
-            Alert buttons should be used to indicate a damaging or unreversable
-            action.
-          </p>
-          <p>
-            Classes: <code>button</code>, <code>alert</code>,
-            <code>medium</code>
-          </p>
-        </div>
-        <button class="button-good">Button</button>
-      </div>
-    </div>
-  </section>
+
   <section class="container-wrapper">
     <header class="container-header">
       <h1>Dropdowns</h1>
@@ -214,16 +148,7 @@
       margin: 0;
     }
   }
-  .control-example {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    &:not(:last-child) {
-      padding-bottom: 8px;
-      border-bottom: 1px solid #bbb;
-      margin-bottom: 8px;
-    }
-  }
+
   .switch-example {
     display: flex;
     align-items: center;

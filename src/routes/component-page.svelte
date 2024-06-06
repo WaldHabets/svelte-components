@@ -30,15 +30,17 @@
   <title>{title}</title>
 </svelte:head>
 
-<HeaderBar {title} width="small" />
-<MenuBar width="small">
-  <div style="display: flex; gap: 8px;">
-    {#if $layout.mobile}
-      <SidebarButton label="Menu" cClass="--medium"/>
-    {/if}
-    <Tablist {tabs} bind:active={active} cClass="--medium" cStyle="flex-grow: 1;" />
-  </div>
-</MenuBar>
+{#if $layout.mobile}
+  <HeaderBar {title} width="none" />
+  <MenuBar width="small">
+    <div style="display: flex; gap: 8px;">
+        <SidebarButton label="Menu" cClass="--medium"/>
+    </div>
+  </MenuBar>
+{:else}
+  <HeaderBar {title} width="none" raised={true} />
+{/if}
+<Tablist {tabs} bind:active={active} cClass="--medium" cStyle="flex-grow: 1;" />
 <div class="centered-page small">
   <svelte:component this="{pages[active.key]}" />
 </div>
